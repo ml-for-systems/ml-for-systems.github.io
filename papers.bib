@@ -28,3 +28,136 @@
   pages={8-16},
   keywords={Taxonomy;Neural networks;Machine learning;Hardware;Adaptation models;Learning systems},
   doi={10.1109/MM.2020.3012883}}
+
+@inproceedings{chen:2022:hpca:retail,
+     author = {Shuang Chen, Angela Jin, Christina Delimitrou, and Jose Martinez},
+     title = {{ReTail: Opting for Learning Simplicity to Enable QoS-Aware Power Management in the Cloud}},
+     booktitle ={Proceedings of the 28th IEEE International Symposium on High-Performance Computer Architecture (HPCA-28)},
+     month = {February},
+     year = {2022},
+     location = {Seoul, South Korea},
+}
+
+@inproceedings{gan:asplos:2021:sage,
+     author = {Yu Gan and Mingyu Liang and Sundar Dev and David Lo and Christina Delimitrou},
+     title = {{Sage: Practical and Scalable ML-Driven Performance Debugging in Microservices}},
+     booktitle ={Proceedings of the Twenty Sixth International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)},
+     month = {April},
+     year = {2021},
+     location = {Virtual},
+}
+
+@inproceedings{zhang:asplos:2021:sinan,
+     author = {Yanqi Zhang and Weizhe Hua and Zhuangzhuang Zhou and Edward Suh and Christina Delimitrou},
+     title = {{Sinan: ML-Based and QoS-Aware Resource Management for Cloud Microservices}},
+     booktitle ={Proceedings of the Twenty Sixth International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)},
+     month = {April},
+     year = {2021},
+     location = {Virtual},
+}
+
+@inproceedings{gan:asplos:2019:seer,
+     author = {Yu Gan and Yanqi Zhang and Kelvin Hu and Yuan He and Meghna Pancholi and Dailun Cheng and Christina Delimitrou},
+     title = {{Seer: Leveraging Big Data to Navigate the Complexity of Performance Debugging in Cloud Microservices}},
+     booktitle ={Proceedings of the Twenty Fourth International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)},
+     month = {April},
+     year = {2019},
+     location = {Providence, RI},
+}
+
+@inproceedings{
+ling2025lava,
+title={{LAVA}: Lifetime-Aware {VM} Allocation with Learned Distributions and Adaptation to Mispredictions},
+author={Jianheng Ling and Pratik Worah and Yawen Wang and Yunchuan Kong and Chunlei Wang and Clifford Stein and Diwakar Gupta and Jason Behmer and Logan A. Bush and Prakash Ramanan and Rajesh Kumar and Thomas Chestna and Yajing Liu and Ying Liu and Ye Zhao and Kathryn S. McKinley and Meeyoung Park and Martin Maas},
+booktitle={Eighth Conference on Machine Learning and Systems},
+year={2025},
+url={https://openreview.net/forum?id=9vyyfVNW1E}
+}
+
+@inproceedings{
+yang2025a,
+title={A Bring-Your-Own-Model Approach for {ML}-Driven Storage Placement in Warehouse-Scale Computers},
+author={Chenxi Yang and Yan Li and Martin Maas and Mustafa Uysal and Ubaid Ullah Hafeez and Arif Merchant and Richard McDougall},
+booktitle={Eighth Conference on Machine Learning and Systems},
+year={2025},
+url={https://openreview.net/forum?id=JuGWOSB68T}
+}
+
+@inproceedings{10.1145/3373376.3378525,
+author = {Maas, Martin and Andersen, David G. and Isard, Michael and Javanmard, Mohammad Mahdi and McKinley, Kathryn S. and Raffel, Colin},
+title = {Learning-based Memory Allocation for C++ Server Workloads},
+year = {2020},
+isbn = {9781450371025},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3373376.3378525},
+doi = {10.1145/3373376.3378525},
+abstract = {Modern C++ servers have memory footprints that vary widely over time, causing persistent heap fragmentation of up to 2x from long-lived objects allocated during peak memory usage. This fragmentation is exacerbated by the use of huge (2MB) pages, a requirement for high performance on large heap sizes. Reducing fragmentation automatically is challenging because C++ memory managers cannot move objects.This paper presents a new approach to huge page fragmentation. It combines modern machine learning techniques with a novel memory manager (LLAMA) that manages the heap based on object lifetimes and huge pages (divided into blocks and lines). A neural network-based language model predicts lifetime classes using symbolized calling contexts. The model learns context-sensitive per-allocation site lifetimes from previous runs, generalizes over different binary versions, and extrapolates from samples to unobserved calling contexts. Instead of size classes, LLAMA's heap is organized by lifetime classes that are dynamically adjusted based on observed behavior at a block granularity.LLAMA reduces memory fragmentation by up to 78\% while only using huge pages on several production servers. We address ML-specific questions such as tolerating mispredictions and amortizing expensive predictions across application execution. Although our results focus on memory allocation, the questions we identify apply to other system-level problems with strict latency and resource requirements where machine learning could be applied.},
+booktitle = {Proceedings of the Twenty-Fifth International Conference on Architectural Support for Programming Languages and Operating Systems},
+pages = {541–556},
+numpages = {16},
+keywords = {lifetime prediction, lstms, machine learning, memory management, profile-guided optimization},
+location = {Lausanne, Switzerland},
+series = {ASPLOS '20}
+}
+
+@inproceedings{MLSYS2021_efe0df3e,
+ author = {Zhou, Giulio and Maas, Martin},
+ booktitle = {Proceedings of Machine Learning and Systems},
+ editor = {A. Smola and A. Dimakis and I. Stoica},
+ pages = {350--364},
+ title = {Learning on Distributed Traces for Data Center Storage Systems},
+ url = {https://proceedings.mlsys.org/paper_files/paper/2021/file/efe0df3ea4a53a04614ad79e7a8a57de-Paper.pdf},
+ volume = {3},
+ year = {2021}
+}
+
+@INPROCEEDINGS{9774607,
+  author={Jain, Paras and Huda, Safeen and Maas, Martin and Gonzalez, Joseph E. and Stoical, Ion and Mirhoseini, Azalia},
+  booktitle={2022 Design, Automation & Test in Europe Conference & Exhibition (DATE)}, 
+  title={Learning to Design Accurate Deep Learning Accelerators with Inaccurate Multipliers}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={184-189},
+  keywords={Deep learning;Degradation;Power demand;Computational modeling;Neural networks;Routing;Systolic arrays;approximate computing;deep learning;TPU},
+  doi={10.23919/DATE54114.2022.9774607}}
+
+@INPROCEEDINGS{9774607,
+  author={Jain, Paras and Huda, Safeen and Maas, Martin and Gonzalez, Joseph E. and Stoical, Ion and Mirhoseini, Azalia},
+  booktitle={2022 Design, Automation & Test in Europe Conference & Exhibition (DATE)}, 
+  title={Learning to Design Accurate Deep Learning Accelerators with Inaccurate Multipliers}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={184-189},
+  keywords={Deep learning;Degradation;Power demand;Computational modeling;Neural networks;Routing;Systolic arrays;approximate computing;deep learning;TPU},
+  doi={10.23919/DATE54114.2022.9774607}}
+
+@inproceedings{10.1145/3591195.3595275,
+author = {Navasca, Christian and Maas, Martin and Maniatis, Petros and Lim, Hyeontaek and Xu, Guoqing Harry},
+title = {Predicting Dynamic Properties of Heap Allocations using Neural Networks Trained on Static Code: An Intellectual Abstract},
+year = {2023},
+isbn = {9798400701795},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3591195.3595275},
+doi = {10.1145/3591195.3595275},
+abstract = {Memory allocators and runtime systems can leverage dynamic properties of heap allocations – such as object lifetimes, hotness or access correlations – to improve performance and resource consumption. A significant amount of work has focused on approaches that collect this information in performance profiles and then use it in new memory allocator or runtime designs, both offline (e.g., in ahead-of-time compilers) and online (e.g., in JIT compilers). This is a special instance of profile-guided optimization.    This approach introduces significant challenges: 1) The profiling oftentimes introduces substantial overheads, which are prohibitive in many production scenarios, 2) Creating a representative profiling run adds significant engineering complexity and reduces deployment velocity, and 3) Profiles gathered ahead of time or during the warm-up phase of a server are often not representative of all workload behavior and may miss important corner cases.    In this paper, we investigate a fundamentally different approach. Instead of deriving heap allocation properties from profiles, we explore the ability of neural network models to predict them from the statically available code. As an intellectual abstract, we do not offer a conclusive answer but describe the trade-off space of this approach, investigate promising directions, motivate these directions with data analysis and experiments, and highlight challenges that future work needs to overcome.},
+booktitle = {Proceedings of the 2023 ACM SIGPLAN International Symposium on Memory Management},
+pages = {43–57},
+numpages = {15},
+keywords = {Lifetime Prediction, Machine Learning, Memory Management, Profile-guided Optimization},
+location = {Orlando, FL, USA},
+series = {ISMM 2023}
+}
+
+@misc{lin2025ecollmdrivenefficientcode,
+      title={ECO: An LLM-Driven Efficient Code Optimizer for Warehouse Scale Computers}, 
+      author={Hannah Lin and Martin Maas and Maximilian Roquemore and Arman Hasanzadeh and Fred Lewis and Yusuf Simonson and Tzu-Wei Yang and Amir Yazdanbakhsh and Deniz Altinbüken and Florin Papa and Maggie Nolan Edmonds and Aditya Patil and Don Schwarz and Satish Chandra and Chris Kennelly and Milad Hashemi and Parthasarathy Ranganathan},
+      year={2025},
+      eprint={2503.15669},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2503.15669}, 
+}

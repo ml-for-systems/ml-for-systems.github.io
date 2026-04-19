@@ -1,3 +1,5 @@
+import { canonicalVenue } from "./venue-aliases.js";
+
 /**
  * Lightweight BibTeX parser for browser use.
  * Handles @article, @inproceedings, @misc, @book, @phdthesis, etc.
@@ -77,6 +79,40 @@ function splitAuthors(authorStr) {
     .filter(Boolean);
 }
 
+/** BibTeX often uses "Last, First" — display as "First Last". */
+function formatAuthorFirstLast(name) {
+  let s = normalizeWhitespace(name);
+  s = s.replace(/\{([^}]*)\}/g, "$1");
+  if (!s) return s;
+
+  const fc = s.indexOf(",");
+  if (fc === -1) {
+    return s;
+  }
+
+  const last = normalizeWhitespace(s.slice(0, fc));
+  const rest = normalizeWhitespace(s.slice(fc + 1));
+  if (!rest) return last;
+
+  if (!rest.includes(",")) {
+    return `${rest} ${last}`.trim();
+  }
+
+  const restParts = rest.split(",").map((p) => normalizeWhitespace(p)).filter(Boolean);
+
+  if (restParts.length === 2 && /^(Jr\.?|Sr\.?|III|II|IV)$/i.test(restParts[1])) {
+    return `${restParts[0]} ${last} ${restParts[1]}`.trim();
+  }
+
+  if (restParts.length >= 2) {
+    const given = restParts[restParts.length - 1];
+    const between = restParts.slice(0, -1).join(" ");
+    return `${given} ${last} ${between}`.trim().replace(/\s+/g, " ");
+  }
+
+  return `${rest} ${last}`.trim();
+}
+
 function parseYear(entry) {
   const y = entry.year || (entry.date && entry.date.slice(0, 4)) || "";
   const n = parseInt(y, 10);
@@ -96,8 +132,8 @@ function venueLabel(entry) {
   return entry.note || "Preprint/other";
 }
 
-function keywordTags(entry) {
-  const raw = entry.keywords || entry.keyword || "";
+function labelTags(entry) {
+  const raw = entry.labels || "";
   if (!raw) return [];
   return raw
     .split(/[,;]/)
@@ -160,10 +196,10 @@ export function parseBibtex(bibtex) {
  */
 export function normalizeEntries(rawEntries) {
   return rawEntries.map((e) => {
-    const authors = splitAuthors(e.author || "");
+    const authors = splitAuthors(e.author || "").map(formatAuthorFirstLast);
     const year = parseYear(e);
-    const venue = venueLabel(e);
-    const tags = keywordTags(e);
+    const venue = canonicalVenue(venueLabel(e));
+    const tags = labelTags(e);
     const title = (e.title || "Untitled").replace(/\{|\}/g, "");
     let url = e.url || "";
     const doi = e.doi || "";
