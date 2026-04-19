@@ -13,6 +13,11 @@ export const VENUE_ALIAS_PATTERNS = [
   ],
   [/\bnsdi\b/i, "NSDI"],
   [
+    /special\s+interest\s+group\s+on\s+data\s+communication/i,
+    "SIGCOMM",
+  ],
+  [/sigcomm/i, "SIGCOMM"],
+  [
     /operating\s+systems\s+design\s+and\s+implementation/i,
     "OSDI",
   ],

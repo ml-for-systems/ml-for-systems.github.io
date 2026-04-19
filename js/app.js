@@ -147,7 +147,7 @@ function renderDashboardVenueChart(container, pairs) {
     .join("");
   container.innerHTML = `<div class="vchart" role="img" aria-label="${escapeHtml(title)}. ${escapeHtml(summary)}">
     <h3 class="vchart__title">${escapeHtml(title)}</h3>
-    <div class="vchart__scroll"><div class="vchart__cols">${cols}</div></div>
+    <div class="vchart__scroll"><div class="vchart__cols vchart__cols--venues">${cols}</div></div>
   </div>`;
 }
 
@@ -254,7 +254,7 @@ async function main() {
   renderDashboardYearChart(document.getElementById("dashboard-chart-years"), yearPairs);
   renderDashboardVenueChart(
     document.getElementById("dashboard-chart-venues"),
-    topN(venueCountsForTopChart(papers), 7)
+    topN(venueCountsForTopChart(papers), 5)
   );
 
   const tagContainer = document.getElementById("filter-tags");

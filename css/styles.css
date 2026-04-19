@@ -352,6 +352,20 @@ a:hover {
   max-width: 100%;
 }
 
+/* Top Venues: wider columns so labels like SIGCOMM stay on one line */
+.vchart__cols--venues .vchart__col {
+  flex: 1 0 52px;
+  min-width: 48px;
+  max-width: 88px;
+}
+
+.vchart__cols--venues .vchart__tick {
+  white-space: nowrap;
+  word-break: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .vchart__empty {
   margin: 0;
   padding: 2rem 0.5rem;
