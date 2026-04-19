@@ -5,8 +5,14 @@ const BIB_URL = "./papers.bib";
 
 const EXCLUDED_VENUES = new Set(["CAL", "Preprint/other"]);
 
-/** Years shown for ISCA and MICRO (inclusive). */
-const ISCA_MICRO_YEAR_RANGE = { from: 2019, to: 2025 };
+/** Years shown for ISCA, MICRO, and EuroSys on this page (inclusive). */
+const EDITORIAL_VENUE_YEARS = { from: 2019, to: 2025 };
+
+/** Years shown for OSDI on this page (inclusive). */
+const OSDI_VENUE_YEARS = { from: 2020, to: 2025 };
+
+/** SOSP is biennial; years shown on this page (not every calendar year). */
+const SOSP_EDITORIAL_YEARS = [2019, 2021, 2023, 2024, 2025];
 
 function escapeHtml(s) {
   return String(s)
@@ -28,8 +34,14 @@ function rangeInclusive(from, to) {
  * @returns {number[]} years to display for this venue
  */
 function displayYearsForVenue(venue, yearsFromData) {
-  if (venue === "ISCA" || venue === "MICRO") {
-    return rangeInclusive(ISCA_MICRO_YEAR_RANGE.from, ISCA_MICRO_YEAR_RANGE.to);
+  if (venue === "ISCA" || venue === "MICRO" || venue === "EuroSys") {
+    return rangeInclusive(EDITORIAL_VENUE_YEARS.from, EDITORIAL_VENUE_YEARS.to);
+  }
+  if (venue === "OSDI") {
+    return rangeInclusive(OSDI_VENUE_YEARS.from, OSDI_VENUE_YEARS.to);
+  }
+  if (venue === "SOSP") {
+    return [...SOSP_EDITORIAL_YEARS];
   }
   if (venue === "HPCA") {
     const s = new Set(yearsFromData);

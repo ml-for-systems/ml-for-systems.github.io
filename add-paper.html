@@ -22,8 +22,8 @@
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>How to add a paper · ML for Systems</title>
-    <meta name="description" content="Add entries to papers.bib for this catalog." />
+    <title>Contribute · ML for Systems</title>
+    <meta name="description" content="Add BibTeX to papers.bib for this catalog." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -36,11 +36,13 @@
     <header class="site-header">
       <div class="site-header__inner">
         <div class="site-header__text">
-          <h1 class="page-heading">How to add a paper</h1>
+          <p class="site-title">
+            <a href="./" class="site-title__link">ML for Systems</a>
+          </p>
         </div>
         <nav class="site-header__nav" aria-label="Site">
-          <a class="site-header__nav-link" href="./">Catalog</a>
           <a class="site-header__nav-link" href="./venues.html">Venues</a>
+          <a class="site-header__nav-link" href="./add-paper.html" aria-current="page">Contribute</a>
           <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme">
             <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
@@ -66,59 +68,20 @@
     </header>
 
     <main class="static-page">
+      <h1 class="visually-hidden">Contribute</h1>
       <p>
-        The site reads a single file, <code>papers.bib</code>, at the repository root. Add or edit BibTeX entries
-        there, commit, and push; GitHub Pages (or any static host) will serve the updated bibliography on the next
-        deploy.
+        Add BibTeX to <code>papers.bib</code> at the repository root, then commit and push. Only that file is
+        loaded by the site.
       </p>
 
-      <h2>1. Pick an entry type</h2>
+      <h2>Tags</h2>
       <p>
-        Use <code>@inproceedings</code> for conference papers (typical) or <code>@article</code> for journal
-        articles. Other types such as <code>@misc</code> (preprints) work; the parser records
-        <code>author</code>, <code>title</code>, <code>year</code>, venue, link fields, and optional
-        <code>labels</code>.
+        Optional: add a <code>labels</code> field with one or more tags, separated by commas or semicolons. They
+        appear on each paper and drive the tag filters on the catalog. Omit the field if you do not want tags.
       </p>
+      <pre><code>labels = {systems, learning},</code></pre>
 
-      <h2>2. Fields the catalog uses</h2>
-      <ul>
-        <li>
-          <strong>Authors</strong> — <code>author = {Last1, First1 and Last2, First2}</code> (BibTeX
-          <code>and</code> separated).
-        </li>
-        <li>
-          <strong>Title</strong> — <code>title = {...}</code>; braces are stripped for display.
-        </li>
-        <li>
-          <strong>Year</strong> — <code>year</code> or leading four digits of <code>date</code>.
-        </li>
-        <li>
-          <strong>Venue</strong> — For conferences, <code>booktitle</code> is used first, then
-          <code>series</code>, then <code>journal</code>. For articles, <code>journal</code> is preferred. Long
-          publisher strings are mapped to short labels (for example ISCA, ASPLOS) via
-          <code>js/venue-aliases.js</code>; add a pattern there if your venue does not match yet.
-        </li>
-        <li>
-          <strong>Link</strong> — <code>url</code> if present; otherwise <code>doi</code> becomes a DOI link;
-          otherwise <code>eprint</code> can point to arXiv.
-        </li>
-        <li>
-          <strong>Tags</strong> — optional <code>labels = {tag1, tag2}</code> (commas or semicolons). They power
-          the tag filters on the main page.
-        </li>
-      </ul>
-
-      <h2>3. Example (conference)</h2>
-      <pre><code>@inproceedings{mykey2025,
-  author    = {Doe, Jane and Smith, Alex},
-  title     = {Learning Better Systems},
-  booktitle = {Proceedings of the 52nd Annual International Symposium on Computer Architecture},
-  year      = {2025},
-  url       = {https://doi.org/10.1145/example},
-  labels    = {systems, learning},
-}</code></pre>
-
-      <h2>4. Common pitfalls</h2>
+      <h2>Common pitfalls</h2>
       <ul>
         <li>
           <strong>Percent signs</strong> — In BibTeX, <code>%</code> starts a comment. Inside abstracts or text,
@@ -133,18 +96,12 @@
           <code>@</code> inside fields, bare <code>%</code>, or a missing comma after the cite key line.
         </li>
       </ul>
-
-      <h2>5. Optional staging file</h2>
-      <p>
-        If you keep a local <code>future_papers.bib</code> (or similar), copy finished entries into
-        <code>papers.bib</code> when you want them on the site — only <code>papers.bib</code> is loaded.
-      </p>
     </main>
 
     <footer class="site-footer">
       <p>
-        <a href="./">Catalog</a>
-        · <a href="./venues.html">Venues</a>
+        <a href="./venues.html">Venues</a>
+        · <a href="./add-paper.html" aria-current="page">Contribute</a>
         · Static site · Edit <code>papers.bib</code> and push to update ·
         <a href="https://pages.github.com/">GitHub Pages</a>
       </p>

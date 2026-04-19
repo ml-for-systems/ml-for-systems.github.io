@@ -13,6 +13,16 @@ export const VENUE_ALIAS_PATTERNS = [
   ],
   [/\bnsdi\b/i, "NSDI"],
   [
+    /operating\s+systems\s+design\s+and\s+implementation/i,
+    "OSDI",
+  ],
+  [/\bosdi\b/i, "OSDI"],
+  [
+    /symposium\s+on\s+operating\s+systems\s+principles/i,
+    "SOSP",
+  ],
+  [/\bsosp\b/i, "SOSP"],
+  [
     /architectural\s+support\s+for\s+programming\s+languages\s+and\s+operating\s+systems/i,
     "ASPLOS",
   ],
@@ -22,6 +32,11 @@ export const VENUE_ALIAS_PATTERNS = [
     /conference on machine learning and systems|proceedings of machine learning and systems/i,
     "MLSys",
   ],
+  [
+    /european\s+conference\s+on\s+computer\s+systems/i,
+    "EuroSys",
+  ],
+  [/\beurosys\b/i, "EuroSys"],
   [
     /design,?\s+automation\s*&\s*test\s+in\s+europe\s+conference\s*&\s*exhibition/i,
     "DATE",

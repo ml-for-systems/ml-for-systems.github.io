@@ -36,10 +36,12 @@
     <header class="site-header">
       <div class="site-header__inner">
         <div class="site-header__text">
-          <h1 class="page-heading">Venue coverage</h1>
+          <p class="site-title">
+            <a href="./" class="site-title__link">ML for Systems</a>
+          </p>
         </div>
         <nav class="site-header__nav" aria-label="Site">
-          <a class="site-header__nav-link" href="./">Catalog</a>
+          <a class="site-header__nav-link" href="./venues.html" aria-current="page">Venues</a>
           <a class="site-header__nav-link" href="./add-paper.html">Contribute</a>
           <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme">
             <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -66,6 +68,7 @@
     </header>
 
     <main class="static-page venues-page">
+      <h1 class="visually-hidden">Venue coverage</h1>
       <p class="venues-page__lead">
         Venues covered in <code>papers.bib</code> (after normalization to short venue names). Year ranges use editorial
         rules for some venues; CAL and preprint-only entries are omitted. Generated when you open this page.
@@ -81,13 +84,13 @@
 
     <footer class="site-footer">
       <p>
-        <a href="./">Catalog</a>
-        · <a href="./venues.html">Venues</a>
-        · <a href="./add-paper.html">How to add a paper</a>
-        · Static site · <code>papers.bib</code>
+        <a href="./venues.html" aria-current="page">Venues</a>
+        · <a href="./add-paper.html">Contribute</a>
+        · Static site · Edit <code>papers.bib</code> and push to update ·
+        <a href="https://pages.github.com/">GitHub Pages</a>
       </p>
     </footer>
 
-    <script type="module" src="./js/venues-page.js?v=2"></script>
+    <script type="module" src="./js/venues-page.js?v=6"></script>
   </body>
 </html>
