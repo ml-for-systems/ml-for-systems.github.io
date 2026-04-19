@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- GitHub Pages: Repository Settings → Pages → Build: GitHub Actions → Save. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      (function () {
+        try {
+          var k = "bib-theme";
+          var s = localStorage.getItem(k);
+          var d = document.documentElement;
+          if (s === "light" || s === "dark") {
+            d.setAttribute("data-theme", s);
+          } else {
+            d.setAttribute(
+              "data-theme",
+              window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+            );
+          }
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title id="page-title">ML for Systems</title>
+    <meta name="description" content="Catalog of papers" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="site-header__text">
+          <h1 class="site-title" id="site-title">ML for Systems</h1>
+        </div>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
+            <path
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+            />
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" aria-label="Filters and charts">
+        <div class="search-wrap">
+          <label class="visually-hidden" for="search-input">Search papers</label>
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Search title, author, venue, tags…"
+            autocomplete="off"
+          />
+        </div>
+
+        <section>
+          <h2>Year</h2>
+          <label class="visually-hidden" for="filter-year">Filter by year</label>
+          <select id="filter-year"></select>
+        </section>
+
+        <section>
+          <h2>Venue</h2>
+          <label class="visually-hidden" for="filter-venue">Filter by venue</label>
+          <select id="filter-venue"></select>
+        </section>
+
+        <section>
+          <div class="chart-block" id="chart-years"></div>
+          <div class="chart-block" id="chart-venues"></div>
+        </section>
+
+        <section>
+          <h2>Tags &amp; keywords</h2>
+          <p style="margin: 0 0 0.5rem; font-size: 0.78rem; color: var(--muted)">
+            Parsed from the <code>keywords</code> field in BibTeX (comma-separated).
+          </p>
+          <div class="filter-group filter-group--tags" id="filter-tags"></div>
+        </section>
+      </aside>
+
+      <main class="main-panel">
+        <p id="load-error" class="error" hidden></p>
+        <h2 id="paper-count" style="margin-top: 0">Loading…</h2>
+        <div class="paper-list" id="papers-root"></div>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <p>
+        Static site · Edit <code>papers.bib</code> and push to update ·
+        <a href="https://pages.github.com/">GitHub Pages</a>
+      </p>
+    </footer>
+
+    <script>
+      (function () {
+        var b = document.getElementById("theme-toggle");
+        if (!b) return;
+        var t = document.documentElement.getAttribute("data-theme");
+        b.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+      })();
+    </script>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
