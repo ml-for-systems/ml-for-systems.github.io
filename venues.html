@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      (function () {
+        try {
+          var k = "bib-theme";
+          var s = localStorage.getItem(k);
+          var d = document.documentElement;
+          if (s === "light" || s === "dark") {
+            d.setAttribute("data-theme", s);
+          } else {
+            d.setAttribute(
+              "data-theme",
+              window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+            );
+          }
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Venue coverage · ML for Systems</title>
+    <meta name="description" content="Venues and years covered in the bibliography." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="site-header__text">
+          <h1 class="page-heading">Venue coverage</h1>
+        </div>
+        <nav class="site-header__nav" aria-label="Site">
+          <a class="site-header__nav-link" href="./">Catalog</a>
+          <a class="site-header__nav-link" href="./add-paper.html">Contribute</a>
+          <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme">
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
+              <path
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              />
+            </svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+              />
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="static-page venues-page">
+      <p class="venues-page__lead">
+        Venues covered in <code>papers.bib</code> (after normalization to short venue names). Year ranges use editorial
+        rules for some venues; CAL and preprint-only entries are omitted. Generated when you open this page.
+      </p>
+      <p id="venues-load-error" class="error" hidden></p>
+      <p id="venues-loading" class="loading">Loading…</p>
+      <div id="venues-dynamic" hidden>
+        <h2>Venues</h2>
+        <ul id="venues-list" class="venues-page__list"></ul>
+        <p id="venues-undated-note" class="venues-page__note" hidden></p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        <a href="./">Catalog</a>
+        · <a href="./venues.html">Venues</a>
+        · <a href="./add-paper.html">How to add a paper</a>
+        · Static site · <code>papers.bib</code>
+      </p>
+    </footer>
+
+    <script type="module" src="./js/venues-page.js?v=2"></script>
+  </body>
+</html>

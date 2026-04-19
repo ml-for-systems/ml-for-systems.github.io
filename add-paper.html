@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      (function () {
+        try {
+          var k = "bib-theme";
+          var s = localStorage.getItem(k);
+          var d = document.documentElement;
+          if (s === "light" || s === "dark") {
+            d.setAttribute("data-theme", s);
+          } else {
+            d.setAttribute(
+              "data-theme",
+              window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+            );
+          }
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How to add a paper · ML for Systems</title>
+    <meta name="description" content="Add entries to papers.bib for this catalog." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="site-header__text">
+          <h1 class="page-heading">How to add a paper</h1>
+        </div>
+        <nav class="site-header__nav" aria-label="Site">
+          <a class="site-header__nav-link" href="./">Catalog</a>
+          <a class="site-header__nav-link" href="./venues.html">Venues</a>
+          <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme">
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
+              <path
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              />
+            </svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+              />
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="static-page">
+      <p>
+        The site reads a single file, <code>papers.bib</code>, at the repository root. Add or edit BibTeX entries
+        there, commit, and push; GitHub Pages (or any static host) will serve the updated bibliography on the next
+        deploy.
+      </p>
+
+      <h2>1. Pick an entry type</h2>
+      <p>
+        Use <code>@inproceedings</code> for conference papers (typical) or <code>@article</code> for journal
+        articles. Other types such as <code>@misc</code> (preprints) work; the parser records
+        <code>author</code>, <code>title</code>, <code>year</code>, venue, link fields, and optional
+        <code>labels</code>.
+      </p>
+
+      <h2>2. Fields the catalog uses</h2>
+      <ul>
+        <li>
+          <strong>Authors</strong> — <code>author = {Last1, First1 and Last2, First2}</code> (BibTeX
+          <code>and</code> separated).
+        </li>
+        <li>
+          <strong>Title</strong> — <code>title = {...}</code>; braces are stripped for display.
+        </li>
+        <li>
+          <strong>Year</strong> — <code>year</code> or leading four digits of <code>date</code>.
+        </li>
+        <li>
+          <strong>Venue</strong> — For conferences, <code>booktitle</code> is used first, then
+          <code>series</code>, then <code>journal</code>. For articles, <code>journal</code> is preferred. Long
+          publisher strings are mapped to short labels (for example ISCA, ASPLOS) via
+          <code>js/venue-aliases.js</code>; add a pattern there if your venue does not match yet.
+        </li>
+        <li>
+          <strong>Link</strong> — <code>url</code> if present; otherwise <code>doi</code> becomes a DOI link;
+          otherwise <code>eprint</code> can point to arXiv.
+        </li>
+        <li>
+          <strong>Tags</strong> — optional <code>labels = {tag1, tag2}</code> (commas or semicolons). They power
+          the tag filters on the main page.
+        </li>
+      </ul>
+
+      <h2>3. Example (conference)</h2>
+      <pre><code>@inproceedings{mykey2025,
+  author    = {Doe, Jane and Smith, Alex},
+  title     = {Learning Better Systems},
+  booktitle = {Proceedings of the 52nd Annual International Symposium on Computer Architecture},
+  year      = {2025},
+  url       = {https://doi.org/10.1145/example},
+  labels    = {systems, learning},
+}</code></pre>
+
+      <h2>4. Common pitfalls</h2>
+      <ul>
+        <li>
+          <strong>Percent signs</strong> — In BibTeX, <code>%</code> starts a comment. Inside abstracts or text,
+          write <code>\%</code>.
+        </li>
+        <li>
+          <strong>Balanced braces</strong> — Every <code>{</code> in a field must close; a missing
+          <code>}</code> can swallow the rest of the file.
+        </li>
+        <li>
+          <strong>Parse warning</strong> — If the catalog shows a count mismatch, check for stray
+          <code>@</code> inside fields, bare <code>%</code>, or a missing comma after the cite key line.
+        </li>
+      </ul>
+
+      <h2>5. Optional staging file</h2>
+      <p>
+        If you keep a local <code>future_papers.bib</code> (or similar), copy finished entries into
+        <code>papers.bib</code> when you want them on the site — only <code>papers.bib</code> is loaded.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        <a href="./">Catalog</a>
+        · <a href="./venues.html">Venues</a>
+        · Static site · Edit <code>papers.bib</code> and push to update ·
+        <a href="https://pages.github.com/">GitHub Pages</a>
+      </p>
+    </footer>
+
+    <script type="module">
+      import { initThemeToggle } from "./js/theme-toggle.js";
+      initThemeToggle();
+    </script>
+  </body>
+</html>

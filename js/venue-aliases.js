@@ -5,22 +5,50 @@
  */
 export const VENUE_ALIAS_PATTERNS = [
   [/ieee\s+computer\s+architecture\s+letters/i, "CAL"],
+  [/(?:annual\s+)?international\s+symposium\s+on\s+computer\s+architecture/i, "ISCA"],
+  [/\bisca\b/i, "ISCA"],
+  [
+    /(?:proceedings\s+of\s+the\s+\d+(?:st|nd|rd|th)\s+)?usenix\s+symposium\s+on\s+networked\s+systems\s+design\s+and\s+implementation|networked\s+systems\s+design\s+and\s+implementation/i,
+    "NSDI",
+  ],
+  [/\bnsdi\b/i, "NSDI"],
+  [
+    /architectural\s+support\s+for\s+programming\s+languages\s+and\s+operating\s+systems/i,
+    "ASPLOS",
+  ],
   [/asplos/i, "ASPLOS"],
   [/\bhpca\b|high[\s-]performance\s+computer\s+architecture/i, "HPCA"],
   [
     /conference on machine learning and systems|proceedings of machine learning and systems/i,
     "MLSys",
   ],
-  [/ieee\s+micro/i, "IEEE Micro"],
+  [
+    /design,?\s+automation\s*&\s*test\s+in\s+europe\s+conference\s*&\s*exhibition/i,
+    "DATE",
+  ],
+  [/international\s+symposium\s+on\s+memory\s+management/i, "ISMM"],
+  [/(?:annual\s+)?international\s+symposium\s+on\s+microarchitecture/i, "MICRO"],
+  [/\bmicro\b/i, "MICRO"],
 ];
 
 /**
  * @param {string} rawVenue
  * @returns {string}
  */
+function normalizeForVenueMatch(s) {
+  return String(s)
+    .replace(/[\u00a0\u2000-\u200b\ufeff]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export function canonicalVenue(rawVenue) {
-  const t = rawVenue == null ? "" : String(rawVenue).trim();
+  const t = normalizeForVenueMatch(rawVenue == null ? "" : rawVenue);
   if (!t) return t;
+  /* Magazine / column title: not MICRO; keep raw so `\bmicro\b` does not map to MICRO. */
+  if (/ieee\s+micro/i.test(t) && !/international\s+symposium\s+on\s+microarchitecture/i.test(t)) {
+    return t;
+  }
   for (const [re, name] of VENUE_ALIAS_PATTERNS) {
     if (re.test(t)) return name;
   }

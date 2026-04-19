@@ -1,4 +1,4 @@
-import { canonicalVenue } from "./venue-aliases.js";
+import { canonicalVenue } from "./venue-aliases.js?v=4";
 
 /**
  * Lightweight BibTeX parser for browser use.
@@ -6,7 +6,8 @@ import { canonicalVenue } from "./venue-aliases.js";
  */
 
 function stripComments(text) {
-  return text.replace(/%[^\n]*/g, "");
+  /* BibTeX: % starts a comment unless escaped as \% (e.g. in abstracts). */
+  return text.replace(/(?<!\\)%[^\n]*/g, "");
 }
 
 function normalizeWhitespace(s) {
@@ -121,8 +122,16 @@ function parseYear(entry) {
 
 function venueLabel(entry) {
   const t = (entry.entryType || "").toLowerCase();
-  if (entry.journal) return entry.journal;
-  if (entry.booktitle) return entry.booktitle;
+  /* Conference entries: booktitle is authoritative; some exports wrongly duplicate in journal. */
+  if (t === "inproceedings" || t === "conference") {
+    if (entry.booktitle) return entry.booktitle;
+    if (entry.series) return entry.series;
+    if (entry.journal) return entry.journal;
+  } else {
+    if (entry.journal) return entry.journal;
+    if (entry.booktitle) return entry.booktitle;
+    if (entry.series) return entry.series;
+  }
   if (entry.howpublished) return entry.howpublished;
   if (entry.publisher && t === "book") return entry.publisher;
   if (entry.school && t.includes("thesis")) return entry.school;
@@ -130,6 +139,19 @@ function venueLabel(entry) {
     return "arXiv";
   }
   return entry.note || "Preprint/other";
+}
+
+/** Prefer booktitle/journal mapping; if still a long proceedings-style string, try `series` (e.g. ISCA '25). */
+function resolveVenue(entry) {
+  const raw = venueLabel(entry);
+  let v = canonicalVenue(raw);
+  if (v !== raw) return v;
+  const series = (entry.series && String(entry.series).trim()) || "";
+  if (series) {
+    const fromSeries = canonicalVenue(series);
+    if (fromSeries !== series) return fromSeries;
+  }
+  return v;
 }
 
 function labelTags(entry) {
@@ -198,7 +220,7 @@ export function normalizeEntries(rawEntries) {
   return rawEntries.map((e) => {
     const authors = splitAuthors(e.author || "").map(formatAuthorFirstLast);
     const year = parseYear(e);
-    const venue = canonicalVenue(venueLabel(e));
+    const venue = resolveVenue(e);
     const tags = labelTags(e);
     const title = (e.title || "Untitled").replace(/\{|\}/g, "");
     let url = e.url || "";
