@@ -3,6 +3,9 @@ import { initThemeToggle } from "./theme-toggle.js";
 
 const BIB_URL = "./papers.bib";
 
+/** Dashboard year chart: only years >= this (inclusive). */
+const YEAR_CHART_MIN = 2019;
+
 function topN(map, n) {
   return [...map.entries()]
     .sort((a, b) => b[1] - a[1])
@@ -98,9 +101,9 @@ function shortenVenueLabel(s) {
 }
 
 function renderDashboardYearChart(container, yearPairs) {
-  const title = "Paper Distribution by Year";
+  const title = `Paper distribution by year (${YEAR_CHART_MIN} onwards)`;
   if (!yearPairs.length) {
-    container.innerHTML = `<div class="vchart"><h3 class="vchart__title">${escapeHtml(title)}</h3><p class="vchart__empty">No year data in bibliography.</p></div>`;
+    container.innerHTML = `<div class="vchart"><h3 class="vchart__title">${escapeHtml(title)}</h3><p class="vchart__empty">No papers with year ${YEAR_CHART_MIN} or later in the bibliography.</p></div>`;
     return;
   }
   const maxVal = Math.max(1, ...yearPairs.map(([, c]) => c));
@@ -250,7 +253,7 @@ async function main() {
   document.getElementById("stat-authors").textContent = String(uniqueAuthors(papers));
   document.getElementById("stat-venues").textContent = String(uniqueVenues(papers));
 
-  const yearPairs = papersByYear(papers);
+  const yearPairs = papersByYear(papers).filter(([y]) => y >= YEAR_CHART_MIN);
   renderDashboardYearChart(document.getElementById("dashboard-chart-years"), yearPairs);
   renderDashboardVenueChart(
     document.getElementById("dashboard-chart-venues"),
