@@ -12,6 +12,13 @@ export const VENUE_ALIAS_PATTERNS = [
     "NSDI",
   ],
   [/\bnsdi\b/i, "NSDI"],
+  [/annual\s+technical\s+conference/i, "ATC"],
+  [/\batc\b/i, "ATC"],
+  [/usenix\s+security\s+symposium/i, "Security"],
+  [
+    /conference\s+on\s+file\s+and\s+storage\s+technologies/i,
+    "FAST",
+  ],
   [
     /special\s+interest\s+group\s+on\s+data\s+communication/i,
     "SIGCOMM",
@@ -86,6 +93,20 @@ export const VENUE_ALIAS_PATTERNS = [
     "SIGMOD",
   ],
   [/\bsigmod\b/i, "SIGMOD"],
+  [/communications\s+of\s+the\s+acm/i, "CACM"],
+  [/\bcacm\b/i, "CACM"],
+  [
+    /conference\s+on\s+computer\s+and\s+communications\s+security/i,
+    "CCS",
+  ],
+  [/\bccs\b/i, "CCS"],
+  [
+    /conference\s+on\s+mobile\s+computing\s+and\s+networking/i,
+    "MobiCom",
+  ],
+  [/\bmobicom\b/i, "MobiCom"],
+  [/foundations\s+of\s+software\s+engineering/i, "FSE"],
+  [/\bfse\b/i, "FSE"],
 ];
 
 /**
