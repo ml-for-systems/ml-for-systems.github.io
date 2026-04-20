@@ -1,4 +1,4 @@
-import { canonicalVenue } from "./venue-aliases.js?v=9";
+import { canonicalVenue } from "./venue-aliases.js?v=17";
 
 /**
  * Lightweight BibTeX parser for browser use.

@@ -38,17 +38,54 @@ export const VENUE_ALIAS_PATTERNS = [
     "MLSys",
   ],
   [
+    /international\s+conference\s+on\s+learning\s+representations/i,
+    "ICLR",
+  ],
+  [/\biclr\b/i, "ICLR"],
+  [
+    /neural\s+information\s+processing\s+systems/i,
+    "NeurIPS",
+  ],
+  [/\bneurips\b/i, "NeurIPS"],
+  [
+    /international\s+conference\s+on\s+machine\s+learning/i,
+    "ICML",
+  ],
+  [/\bicml\b/i, "ICML"],
+  [
     /european\s+conference\s+on\s+computer\s+systems/i,
     "EuroSys",
   ],
   [/\beurosys\b/i, "EuroSys"],
+  [/symposium\s+on\s+cloud\s+computing/i, "SoCC"],
+  [/\bsocc\b/i, "SoCC"],
+  [
+    /symposium\s+on\s+code\s+generation\s+and\s+optimization/i,
+    "CGO",
+  ],
+  [/\bcgo\b/i, "CGO"],
   [
     /design,?\s+automation\s*&\s*test\s+in\s+europe\s+conference\s*&\s*exhibition/i,
     "DATE",
   ],
   [/international\s+symposium\s+on\s+memory\s+management/i, "ISMM"],
+  [
+    /international\s+symposium\s+on\s+workload\s+characterization/i,
+    "IISWC",
+  ],
+  [/\biiswc\b/i, "IISWC"],
   [/(?:annual\s+)?international\s+symposium\s+on\s+microarchitecture/i, "MICRO"],
   [/\bmicro\b/i, "MICRO"],
+  [
+    /international\s+conference\s+on\s+very\s+large\s+data\s+bases/i,
+    "VLDB",
+  ],
+  [/vldb/i, "VLDB"],
+  [
+    /international\s+conference\s+on\s+management\s+of\s+data/i,
+    "SIGMOD",
+  ],
+  [/\bsigmod\b/i, "SIGMOD"],
 ];
 
 /**

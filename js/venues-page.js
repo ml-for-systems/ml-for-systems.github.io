@@ -3,7 +3,23 @@ import { initThemeToggle } from "./theme-toggle.js";
 
 const BIB_URL = "./papers.bib";
 
-const EXCLUDED_VENUES = new Set(["CAL", "Preprint/other"]);
+const EXCLUDED_VENUES = new Set(["Preprint/other"]);
+
+/** Venues listed as bullets, in display order (canonical names after `canonicalVenue`). */
+const FEATURED_VENUE_ORDER = [
+  "ASPLOS",
+  "EuroSys",
+  "HPCA",
+  "MICRO",
+  "ISCA",
+  "OSDI",
+  "SOSP",
+  "NSDI",
+  "SIGCOMM",
+  "MLSys",
+];
+
+const FEATURED_VENUE_SET = new Set(FEATURED_VENUE_ORDER);
 
 /** Years shown for ISCA, MICRO, EuroSys, and NSDI on this page (inclusive). */
 const EDITORIAL_VENUE_YEARS = { from: 2019, to: 2025 };
@@ -29,6 +45,20 @@ function rangeInclusive(from, to) {
   const out = [];
   for (let y = from; y <= to; y++) out.push(y);
   return out;
+}
+
+/**
+ * @param {string[]} names sorted venue labels
+ */
+function sentenceOtherVenues(names) {
+  if (names.length === 0) return "";
+  if (names.length === 1) return `Other venues represented in the bibliography include ${names[0]}.`;
+  if (names.length === 2) {
+    return `Other venues represented in the bibliography include ${names[0]} and ${names[1]}.`;
+  }
+  const allButLast = names.slice(0, -1).join(", ");
+  const last = names[names.length - 1];
+  return `Other venues represented in the bibliography include ${allButLast}, and ${last}.`;
 }
 
 /**
@@ -96,8 +126,17 @@ function main() {
         .filter(([v]) => !EXCLUDED_VENUES.has(v))
         .sort((a, b) => a[0].localeCompare(b[0]));
 
+      const byVenueName = new Map(venueRows);
+      const otherVenueNames = venueRows
+        .filter(([v]) => !FEATURED_VENUE_SET.has(v))
+        .map(([v]) => v)
+        .sort((a, b) => a.localeCompare(b));
+
       venuesUl.replaceChildren();
-      for (const [venue, { total, byYear: ymap }] of venueRows) {
+      for (const venue of FEATURED_VENUE_ORDER) {
+        const row = byVenueName.get(venue);
+        if (!row) continue;
+        const { total, byYear: ymap } = row;
         const li = document.createElement("li");
         const yearsFromData = [...ymap.keys()];
         const years = displayYearsForVenue(venue, yearsFromData);
@@ -109,6 +148,16 @@ function main() {
         const yearPart = parts.length ? ` — ${parts.join(" · ")}` : "";
         li.innerHTML = `<strong>${escapeHtml(venue)}</strong>${escapeHtml(yearPart)} <span class="venues-page__meta">(${total} ${total === 1 ? "paper" : "papers"})</span>`;
         venuesUl.appendChild(li);
+      }
+
+      const otherNote = document.getElementById("venues-other-note");
+      if (otherNote) {
+        if (otherVenueNames.length > 0) {
+          otherNote.hidden = false;
+          otherNote.textContent = sentenceOtherVenues(otherVenueNames);
+        } else {
+          otherNote.hidden = true;
+        }
       }
 
       const note = document.getElementById("venues-undated-note");

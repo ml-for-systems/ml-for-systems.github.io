@@ -64,17 +64,6 @@ location = {Lausanne, Switzerland},
 series = {ASPLOS '20}
 }
 
-
-@misc{lin2025ecollmdrivenefficientcode,
-      title={ECO: An LLM-Driven Efficient Code Optimizer for Warehouse Scale Computers}, 
-      author={Hannah Lin and Martin Maas and Maximilian Roquemore and Arman Hasanzadeh and Fred Lewis and Yusuf Simonson and Tzu-Wei Yang and Amir Yazdanbakhsh and Deniz Altinbüken and Florin Papa and Maggie Nolan Edmonds and Aditya Patil and Don Schwarz and Satish Chandra and Chris Kennelly and Milad Hashemi and Parthasarathy Ranganathan},
-      year={2025},
-      eprint={2503.15669},
-      archivePrefix={arXiv},
-      primaryClass={cs.SE},
-      url={https://arxiv.org/abs/2503.15669}, 
-}
-
 @inproceedings{mhapsekar2026cachemind,
   author = {Mhapsekar, Kaushal and Ghanbari, Azam and Aslrousta, Bita and Mirbagher-Ajorpaz, Samira},
   title = {CACHEMIND: From Miss Rates to Why - Natural-Language, Trace-Grounded Reasoning for Cache Replacement},
@@ -2229,3 +2218,146 @@ journal={Proceedings of Machine Learning and Systems},
 volume={2},
 pages={470--480},
 year={2020}}
+
+@ARTICLE{9153088,
+author={Maas, Martin},
+journal={IEEE Micro}, 
+title={A Taxonomy of ML for Systems Problems}, 
+year={2020},
+volume={40},
+number={5},
+pages={8-16},
+keywords={Taxonomy;Neural networks;Machine learning;Hardware;Adaptation models;Learning systems},
+doi={10.1109/MM.2020.3012883}}
+
+@inproceedings{
+shypula2024learning,
+title={Learning Performance-Improving Code Edits},
+author={Alexander G Shypula and Aman Madaan and Yimeng Zeng and Uri Alon and Jacob R. Gardner and Yiming Yang and Milad Hashemi and Graham Neubig and Parthasarathy Ranganathan and Osbert Bastani and Amir Yazdanbakhsh},
+booktitle={The Twelfth International Conference on Learning Representations},
+year={2024},
+url={https://openreview.net/forum?id=ix7rLVHXyY}}
+
+@INPROCEEDINGS{9975403,
+author={Sýkora, Ondřej and Phothilimthana, Phitchaya Mangpo and Mendis, Charith and Yazdanbakhsh, Amir},
+booktitle={2022 IEEE International Symposium on Workload Characterization (IISWC)}, 
+title={GRANITE: A Graph Neural Network Model for Basic Block Throughput Estimation}, 
+year={2022},
+volume={},
+number={},
+pages={14-26},
+url={https://ieeexplore.ieee.org/document/9975403},
+keywords={Training;Analytical models;Microarchitecture;Estimation;Machine learning;Predictive models;Throughput;machine learnig;throughput estimation;performance;microarchitecture;graph neural network;optimization;performance model},
+doi={10.1109/IISWC55918.2022.00012}}
+
+@inproceedings{
+tehranijamsaz2024coderosetta,
+title={CodeRosetta: Pushing the Boundaries of Unsupervised Code Translation for Parallel Programming},
+author={Ali TehraniJamsaz and Arijit Bhattacharjee and Le Chen and Nesreen K. Ahmed and Amir Yazdanbakhsh and Ali Jannesari},
+booktitle={The Thirty-eighth Annual Conference on Neural Information Processing Systems},
+year={2024},
+url={https://openreview.net/forum?id=V6hrg4O9gg}}
+
+@inproceedings{hashemi2018learning,
+title={Learning memory access patterns},
+author={Hashemi, Milad and Swersky, Kevin and Smith, Jamie and Ayers, Grant and Litz, Heiner and Chang, Jichuan and Kozyrakis, Christos and Ranganathan, Parthasarathy},
+booktitle={International Conference on Machine Learning},
+pages={1919--1928},
+year={2018},
+organization={PMLR}}
+
+@inproceedings{liu2020imitation,
+title={An imitation learning approach for cache replacement},
+author={Liu, Evan and Hashemi, Milad and Swersky, Kevin and Ranganathan, Parthasarathy and Ahn, Junwhan},
+booktitle={International Conference on Machine Learning},
+pages={6237--6247},
+year={2020},
+organization={PMLR}}
+
+@inproceedings{iqbal2023cameo,
+title={Cameo: A causal transfer learning approach for performance optimization of configurable computer systems},
+author={Iqbal, Md Shahriar and Zhong, Ziyuan and Ahmad, Iftakhar and Ray, Baishakhi and Jamshidi, Pooyan},
+booktitle={Proceedings of the 2023 ACM Symposium on Cloud Computing},
+pages={555--571},
+year={2023}
+}
+
+@inproceedings{haj2020neurovectorizer,
+title={Neurovectorizer: End-to-end vectorization with deep reinforcement learning},
+author={Haj-Ali, Ameer and Ahmed, Nesreen K and Willke, Ted and Shao, Yakun Sophia and Asanovic, Krste and Stoica, Ion},
+booktitle={Proceedings of the 18th ACM/IEEE International Symposium on Code Generation and Optimization},
+pages={242--255},
+year={2020}
+}
+
+@inproceedings{10.1145/3696443.3708959,
+author = {Wang, Huanting and Lenihan, Patrick and Wang, Zheng},
+title = {Enhancing Deployment-Time Predictive Model Robustness for Code Analysis and Optimization},
+year = {2025},
+isbn = {9798400712753},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3696443.3708959},
+doi = {10.1145/3696443.3708959},
+abstract = {Supervised machine learning techniques have shown promising results in code analysis and optimization problems. However, a learning-based solution can be brittle because minor changes in hardware or application workloads – such as facing a new CPU architecture or code pattern – may jeopardize decision accuracy, ultimately undermining model robustness. We introduce Prom, an open-source library to enhance the robustness and performance of predictive models against such changes during deployment. Prom achieves this by using statistical assessments to identify test samples prone to mispredictions and using feedback on these samples to improve a deployed model. We showcase Prom by applying it to 13 representative machine learning models across 5 code analysis and optimization tasks. Our extensive evaluation demonstrates that Prom can successfully identify an average of 96\% (up to 100\%) of mispredictions. By relabeling up to 5\% of the Prom-identified samples through incremental learning, Prom can help a deployed model achieve a performance comparable to that attained during its model training phase.},
+booktitle = {Proceedings of the 23rd ACM/IEEE International Symposium on Code Generation and Optimization},
+pages = {31–46},
+numpages = {16},
+keywords = {Machine learning, Model reliability, Statistical assessment},
+location = {Las Vegas, NV, USA},
+series = {CGO '25}
+}
+
+@article{mirhoseini2021graph,
+title={A graph placement methodology for fast chip design},
+author={Mirhoseini, Azalia and Goldie, Anna and Yazgan, Mustafa and Jiang, Joe Wenjie and Songhori, Ebrahim and Wang, Shen and Lee, Young-Joon and Johnson, Eric and Pathak, Omkar and Nazi, Azade and others},
+journal={Nature},
+volume={594},
+number={7862},
+pages={207--212},
+year={2021},
+publisher={Nature Publishing Group},
+doi={10.1038/s41586-021-03544-w},
+url={https://doi.org/10.1038/s41586-021-03544-w}
+}
+
+@article{10.14778/3342263.3342644,
+author = {Marcus, Ryan and Negi, Parimarjan and Mao, Hongzi and Zhang, Chi and Alizadeh, Mohammad and Kraska, Tim and Papaemmanouil, Olga and Tatbul, Nesime},
+title = {Neo: a learned query optimizer},
+year = {2019},
+issue_date = {July 2019},
+publisher = {VLDB Endowment},
+volume = {12},
+number = {11},
+issn = {2150-8097},
+url = {https://doi.org/10.14778/3342263.3342644},
+doi = {10.14778/3342263.3342644},
+journal = {Proc. VLDB Endow.},
+month = jul,
+pages = {1705–1718},
+numpages = {14}
+}
+
+@inproceedings{ding2020alex,
+title={ALEX: an updatable adaptive learned index},
+author={Ding, Jialin and Minhas, Umar Farooq and Yu, Jia and Wang, Chi and Do, Jaeyoung and Li, Yinan and Zhang, Hantian and Chandramouli, Badrish and Gehrke, Johannes and Kossmann, Donald and others},
+booktitle={Proceedings of the 2020 ACM SIGMOD international conference on management of data},
+pages={969--984},
+year={2020}
+}
+
+@inproceedings{marcus2021bao,
+title={Bao: Making learned query optimization practical},
+author={Marcus, Ryan and Negi, Parimarjan and Mao, Hongzi and Tatbul, Nesime and Alizadeh, Mohammad and Kraska, Tim},
+booktitle={Proceedings of the 2021 International Conference on Management of Data},
+pages={1275--1288},
+year={2021}
+}
+
+@inproceedings{kraska2018case,
+title={The case for learned index structures},
+author={Kraska, Tim and Beutel, Alex and Chi, Ed H and Dean, Jeffrey and Polyzotis, Neoklis},
+booktitle={Proceedings of the 2018 international conference on management of data},
+pages={489--504},
+year={2018}
+}
