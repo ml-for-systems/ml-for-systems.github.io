@@ -9,6 +9,23 @@
   keywords={Bandwidth;Data models;Bayes methods;Uncertainty;Computational modeling;Predictive models;Internet;Bayesian neural networks;generalizability;machine learning for systems;uncertainty estimation},
   doi={10.1109/LCA.2024.3384449}}
 
+@inproceedings{10.1145/3445814.3446739,
+author = {Banerjee, Subho S. and Jha, Saurabh and Kalbarczyk, Zbigniew and Iyer, Ravishankar K.},
+title = {BayesPerf: minimizing performance monitoring errors using Bayesian statistics},
+year = {2021},
+isbn = {9781450383172},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3445814.3446739},
+doi = {10.1145/3445814.3446739},
+abstract = {Hardware performance counters (HPCs) that measure low-level architectural and microarchitectural events provide dynamic contextual information about the state of the system. However, HPC measurements are error-prone due to non determinism (e.g., undercounting due to event multiplexing, or OS interrupt-handling behaviors). In this paper, we present BayesPerf, a system for quantifying uncertainty in HPC measurements by using a domain-driven Bayesian model that captures microarchitectural relationships between HPCs to jointly infer their values as probability distributions. We provide the design and implementation of an accelerator that allows for low-latency and low-power inference of the BayesPerf model for x86 and ppc64 CPUs. BayesPerf reduces the average error in HPC measurements from 40.1\% to 7.6\% when events are being multiplexed. The value of BayesPerf in real-time decision-making is illustrated with a simple example of scheduling of PCIe transfers.},
+booktitle = {Proceedings of the 26th ACM International Conference on Architectural Support for Programming Languages and Operating Systems},
+pages = {832–844},
+numpages = {13},
+keywords = {Sampling Errors, Probabilistic Graphical Model, Performance Counter, Error Detection, Error Correction, Accelerator},
+location = {Virtual, USA},
+series = {ASPLOS '21}}
+
 @inproceedings{gan:asplos:2021:sage,
      author = {Yu Gan and Mingyu Liang and Sundar Dev and David Lo and Christina Delimitrou},
      title = {{Sage: Practical and Scalable ML-Driven Performance Debugging in Microservices}},
