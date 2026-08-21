@@ -21,17 +21,37 @@ const FEATURED_VENUE_ORDER = [
 
 const FEATURED_VENUE_SET = new Set(FEATURED_VENUE_ORDER);
 
-/** Years shown for ISCA, MICRO, EuroSys, and NSDI on this page (inclusive). */
-const EDITORIAL_VENUE_YEARS = { from: 2019, to: 2025 };
+/** Coverage start year for ISCA, MICRO, EuroSys, and NSDI (end = max year in bib for that venue). */
+const EDITORIAL_VENUE_FROM = 2019;
 
-/** Years shown for OSDI on this page (inclusive). */
-const OSDI_VENUE_YEARS = { from: 2020, to: 2025 };
+/** Coverage start year for OSDI (end = max year in bib for OSDI). */
+const OSDI_VENUE_FROM = 2020;
 
-/** SOSP is biennial; years shown on this page (not every calendar year). */
+/** SOSP conference years to list through the latest SOSP year in the bib (not every calendar year). */
 const SOSP_EDITORIAL_YEARS = [2019, 2021, 2023, 2024, 2025];
 
-/** Years shown for MLSys on this page (inclusive). */
-const MLSYS_VENUE_YEARS = { from: 2018, to: 2025 };
+/** Coverage start year for MLSys (end = max year in bib for MLSys). */
+const MLSYS_VENUE_FROM = 2018;
+
+/** Subarea charts: ISCA, MICRO, HPCA, ASPLOS */
+const SUBAREA_ARCH_VENUES = ["ISCA", "MICRO", "HPCA", "ASPLOS"];
+
+/** Subarea charts: OSDI, SOSP, EuroSys */
+const SUBAREA_SYSTEMS_VENUES = ["OSDI", "SOSP", "EuroSys"];
+
+/** Networking venues */
+const SUBAREA_NETWORKS_VENUES = ["NSDI", "SIGCOMM"];
+
+/** MLSys — counted only on the combined chart, not a separate bar chart */
+const SUBAREA_MLSYS_VENUES = ["MLSys"];
+
+/** Combined chart: architecture + systems + networking + MLSys */
+const SUBAREA_ARCH_AND_SYSTEMS_VENUES = [
+  ...SUBAREA_ARCH_VENUES,
+  ...SUBAREA_SYSTEMS_VENUES,
+  ...SUBAREA_NETWORKS_VENUES,
+  ...SUBAREA_MLSYS_VENUES,
+];
 
 function escapeHtml(s) {
   return String(s)
@@ -45,6 +65,68 @@ function rangeInclusive(from, to) {
   const out = [];
   for (let y = from; y <= to; y++) out.push(y);
   return out;
+}
+
+function formatYearShort(y) {
+  const n = Number(y);
+  return `'${String(n % 100).padStart(2, "0")}`;
+}
+
+/**
+ * Total papers per year across the given venues (one bar per year).
+ * @param {HTMLElement} container
+ * @param {{ venue?: string, year?: number | null }[]} papers
+ * @param {string[]} venues
+ * @param {string} title
+ * @param {string} barClass e.g. `vchart__bar--blue`
+ */
+function renderSubareaTotalsByYear(container, papers, venues, title, barClass) {
+  const venueSet = new Set(venues);
+  const filtered = papers.filter((p) => {
+    const v = p.venue || "";
+    if (!venueSet.has(v)) return false;
+    if (EXCLUDED_VENUES.has(v)) return false;
+    return p.year != null;
+  });
+
+  /** @type {Map<number, number>} */
+  const byYear = new Map();
+  for (const p of filtered) {
+    const y = /** @type {number} */ (p.year);
+    byYear.set(y, (byYear.get(y) || 0) + 1);
+  }
+
+  if (byYear.size === 0) {
+    container.innerHTML = `<div class="vchart"><h3 class="vchart__title">${escapeHtml(title)}</h3><p class="vchart__empty">No dated papers from these venues in the bibliography.</p></div>`;
+    return;
+  }
+
+  const yearNums = [...byYear.keys()].sort((a, b) => a - b);
+  const years = rangeInclusive(yearNums[0], yearNums[yearNums.length - 1]);
+
+  const yearPairs = years.map((y) => [y, byYear.get(y) || 0]);
+  const maxVal = Math.max(1, ...yearPairs.map(([, c]) => c));
+
+  const cols = yearPairs
+    .map(([y, c]) => {
+      const pct = Math.round((c / maxVal) * 100);
+      const barPct = c === 0 ? 0 : Math.max(8, pct);
+      return `<div class="vchart__col">
+        <span class="vchart__count">${c}</span>
+        <div class="vchart__track">
+          <div class="vchart__bar ${barClass}" style="height:${barPct}%"></div>
+        </div>
+        <span class="vchart__tick">${escapeHtml(formatYearShort(y))}</span>
+      </div>`;
+    })
+    .join("");
+
+  const summary = yearPairs.map(([y, c]) => `${y}: ${c}`).join(", ");
+
+  container.innerHTML = `<div class="vchart" role="img" aria-label="${escapeHtml(title)}. ${escapeHtml(summary)}">
+    <h3 class="vchart__title">${escapeHtml(title)}</h3>
+    <div class="vchart__scroll"><div class="vchart__cols">${cols}</div></div>
+  </div>`;
 }
 
 /**
@@ -62,28 +144,42 @@ function sentenceOtherVenues(names) {
 }
 
 /**
+ * Continuous year list from an editorial start through the latest year in the bib for that venue.
+ * @param {number} from
+ * @param {number[]} yearsFromData
+ * @returns {number[]}
+ */
+function editorialRangeThroughData(from, yearsFromData) {
+  if (!yearsFromData.length) return [];
+  const to = Math.max(...yearsFromData);
+  if (to < from) return [...yearsFromData].sort((a, b) => a - b);
+  return rangeInclusive(from, to);
+}
+
+/**
  * @param {string} venue
- * @param {number[]} yearsFromData sorted unique years from bib
+ * @param {number[]} yearsFromData unique years from bib for this venue
  * @returns {number[]} years to display for this venue
  */
 function displayYearsForVenue(venue, yearsFromData) {
   if (venue === "ISCA" || venue === "MICRO" || venue === "EuroSys" || venue === "NSDI") {
-    return rangeInclusive(EDITORIAL_VENUE_YEARS.from, EDITORIAL_VENUE_YEARS.to);
+    return editorialRangeThroughData(EDITORIAL_VENUE_FROM, yearsFromData);
   }
   if (venue === "OSDI") {
-    return rangeInclusive(OSDI_VENUE_YEARS.from, OSDI_VENUE_YEARS.to);
+    return editorialRangeThroughData(OSDI_VENUE_FROM, yearsFromData);
   }
   if (venue === "SOSP") {
-    return [...SOSP_EDITORIAL_YEARS];
+    if (!yearsFromData.length) return [];
+    const to = Math.max(...yearsFromData);
+    const years = new Set(SOSP_EDITORIAL_YEARS.filter((y) => y <= to));
+    for (const y of yearsFromData) years.add(y);
+    return [...years].sort((a, b) => a - b);
   }
   if (venue === "MLSys") {
-    return rangeInclusive(MLSYS_VENUE_YEARS.from, MLSYS_VENUE_YEARS.to);
+    return editorialRangeThroughData(MLSYS_VENUE_FROM, yearsFromData);
   }
   if (venue === "HPCA") {
-    const s = new Set(yearsFromData);
-    s.add(2019);
-    s.add(2026);
-    return [...s].sort((a, b) => a - b);
+    return editorialRangeThroughData(EDITORIAL_VENUE_FROM, yearsFromData);
   }
   return [...yearsFromData].sort((a, b) => a - b);
 }
@@ -171,6 +267,48 @@ function main() {
         } else {
           note.hidden = true;
         }
+      }
+
+      const combinedEl = document.getElementById("venues-chart-combined");
+      const archEl = document.getElementById("venues-chart-arch");
+      const sysEl = document.getElementById("venues-chart-systems");
+      if (combinedEl) {
+        renderSubareaTotalsByYear(
+          combinedEl,
+          papers,
+          SUBAREA_ARCH_AND_SYSTEMS_VENUES,
+          "Architecture, systems, networking, and MLSys (ISCA, MICRO, HPCA, ASPLOS, OSDI, SOSP, EuroSys, NSDI, SIGCOMM, MLSys)",
+          "vchart__bar--combined"
+        );
+      }
+      if (archEl) {
+        renderSubareaTotalsByYear(
+          archEl,
+          papers,
+          SUBAREA_ARCH_VENUES,
+          "Computer architecture (ISCA, MICRO, HPCA, ASPLOS)",
+          "vchart__bar--blue"
+        );
+      }
+      if (sysEl) {
+        renderSubareaTotalsByYear(
+          sysEl,
+          papers,
+          SUBAREA_SYSTEMS_VENUES,
+          "Systems (OSDI, SOSP, EuroSys)",
+          "vchart__bar--orange"
+        );
+      }
+
+      const netEl = document.getElementById("venues-chart-networks");
+      if (netEl) {
+        renderSubareaTotalsByYear(
+          netEl,
+          papers,
+          SUBAREA_NETWORKS_VENUES,
+          "Networking (NSDI, SIGCOMM)",
+          "vchart__bar--networks"
+        );
       }
 
       loadingEl.hidden = true;
