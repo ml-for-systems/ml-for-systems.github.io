@@ -1,3 +1,531 @@
+@inbook{10.1145/3789240.3829158,
+author = {Zhang, Yinjie and Chen, Ying and Hu, Yuming and Zhang, Aoyang and Chen, Pengcheng and Luo, Zhixiang and Li, Shaopeng and Zhong, Zhendong and Tao, Haiqing and Xie, Lan and Huang, Shenglan and Fan, Zhiwei and Qian, Feng},
+title = {Prefetching for Short Video Streaming: Experiences from a Longitudinal Evolution at Planetary Scale},
+year = {2026},
+isbn = {9798400724671},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3789240.3829158},
+abstract = {Short-form video streaming is characterized by fast-paced, scrolling-driven user interactions. This poses unique challenges for its streaming algorithm design. To our knowledge, there is little understanding of how short video streaming algorithms perform in large-scale production platforms. To bridge this gap, this paper reports our two-year experience in evolving the prefetching algorithm, a critical algorithmic component for short video streaming, deployed in a leading global short video service. We adopt an iterative, production-driven approach, progressively evolving the design from simple heuristics to optimization-based and data-driven algorithms, with each iteration validated through large-scale A/B tests on hundreds of millions of users. Our evolution advances two core components: the prefetching logic and the viewing time estimation, including a lightweight on-device personalization mechanism. Through carefully balancing startup delay, mid-playback stalls, bandwidth usage, runtime overhead, and estimation accuracy, we achieve a 0.38\% increase in user stay time - our key engagement metric - while simultaneously reducing bandwidth consumption by 14.7\% throughout the evolution. We distill actionable insights from real-world deployment, highlighting the importance of startup latency, bandwidth efficiency, and low-overhead design for short video streaming at scale.},
+booktitle = {Proceedings of the ACM SIGCOMM 2026 Conference},
+pages = {714–729},
+numpages = {16}
+}
+
+@inproceedings{10.1145/3789240.3829107,
+author = {Zhang, Han and Liu, Xuefeng and Qian, Linqiang and Liu, Guyue (Grace) and Zhang, Tianyu and Zhao, Kaiyang and Tong, Yantu and Xiao, Zeji and He, Dongbiao and Li, Yahui and Ruan, Ke and Wang, Jilong and Zhu, Yongqing and Yin, Xia},
+title = {Towards High-Performance Intrusion Detection with Robustness Guarantees on Programmable Switches at ISP Scale},
+year = {2026},
+isbn = {9798400724671},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3789240.3829107},
+doi = {10.1145/3789240.3829107},
+abstract = {In order to provide security connections to the enterprise campus sites, internet service providers are offering comprehensive intrusion detection services at the network layer. However, existing network intrusion detection systems (NIDS) are either ineffective or inefficient for high-speed network protection, especially for encrypted traffic analysis. In this paper, we design and implement SiteGuard, an inline network intrusion detection system with programmable switches specifically developed to protect enterprise campus sites connecting to ISP. SiteGuard proposes a dual-plane feature extraction model to extract extensive traffic features at near line-speed. SiteGuard also proposes a lightweight one-class classification model that trains the best parameters exclusively on benign traffic to identify malicious traffic. In addition, SiteGuard introduces an online update mechanism that aims to dynamically adjust the detection model in response to environmental changes. SiteGuard has been in production for more than three years. Our production and testbed evaluations demonstrate SiteGuard can detect malicious traffic with approximately 90\% accuracy in minutes.},
+booktitle = {Proceedings of the ACM SIGCOMM 2026 Conference},
+pages = {1282–1298},
+numpages = {17},
+keywords = {security, network intrusion detection, programmable switches},
+location = {Colorado Convention Center, Denver, CO, USA},
+series = {SIGCOMM '26}
+}
+
+@inproceedings{10.1145/3789240.3829126,
+author = {Xu, Haoran and Zeng, Xuan and Zhang, Xumiao and Zhang, Xiaoxi and Lv, Yang and Zhang, Peng and Guo, Deke and Zhai, Ennan},
+title = {AIDA: Accelerating Root Cause Analysis for Multi-Vendor Device Failures with LLM-Powered Reasoning},
+year = {2026},
+isbn = {9798400724671},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3789240.3829126},
+doi = {10.1145/3789240.3829126},
+abstract = {Root cause analysis (RCA) of network device failures is critical to cloud reliability. While monitoring can identify which device has failed, diagnosing why remains a slow, manual process, increasing the risk of recurring failures and cascading service disruptions. Existing automated methods are inadequate: traditional methods lack precision, while prior machine learning (ML) and large language model (LLM) approaches are often too coarse-grained, require heavy manual configuration, or fail to produce verifiable reasoning essential for operator trust. This paper presents AIDA, the first system to deliver automated, fine-grained RCA of network device failures, deployed at scale in Alibaba Cloud's production network. AIDA's contributions include: (1) fine-tuning an LLM with reinforcement learning to distill expert logic into interpretable reasoning chains; (2) synthesizing these chains into an evolving knowledge graph (KG) to support retrieval-augmented generation (RAG); and (3) employing RAG-driven multi-step inference wherein the LLM is sequentially guided by the KG to construct robust, verifiable reasoning. Deployed for over a year, AIDA has achieved 95.4\% precision with interpretable output and reduced the median RCA time from 72.6 hours to 1.6 minutes. Notably, it curtails the 90th-percentile diagnosis latency from 329.9 hours to 19.4 hours.},
+booktitle = {Proceedings of the ACM SIGCOMM 2026 Conference},
+pages = {770–786},
+numpages = {17},
+keywords = {AIOps, root cause analysis, network device failures, large language models, retrieval-augmented generation},
+location = {Colorado Convention Center, Denver, CO, USA},
+series = {SIGCOMM '26}
+}
+
+@inbook{10.1145/3789240.3829145,
+author = {Ren, Yanyu and Lin, Xianshang and Wang, Chenxu and Chen, Li and Wang, Shuai and Gao, Kaihui and Li, Dan and Bai, Yunfeng and Tian, Chen and Zhang, Xinlei and Li, Yunguang and Lin, Tao and Zhai, Ennan},
+title = {Networked Agent Memory and Causality Representation: Experiences towards Interpretable Cloud-Scale Root-Causing},
+year = {2026},
+isbn = {9798400724671},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3789240.3829145},
+abstract = {Root-causing is critical yet labor-intensive in cloud-scale network operations. However, existing solutions struggle to adapt to unforeseen failure modes and large-scale incidents with limited agent memory. Their black-box output explanation also fails to provide the verifiable interpretability required for operator trust. In this paper, we present XiHe, a novel multi-agent framework designed to address these challenges. XiHe employs guided evidence-driven agents to decompose diagnostic tasks, utilizes networked agent memory to share global context without saturating memory, and leverages networked causality representation to synthesize transparent, verifiable causal graphs. XiHe has been deployed in our global cloud infrastructure for 12 months, assisting with over 3,000 incidents, reducing operator root-causing time by 25.8\% and garnering a 95.1\% satisfaction rate. XiHe also achieves an overall accuracy of 94.6\%, a 54.9\% mistake reduction compared to the state-of-the-art methods.},
+booktitle = {Proceedings of the ACM SIGCOMM 2026 Conference},
+pages = {787–808},
+numpages = {22}
+}
+
+@inbook{10.1145/3789240.3829193,
+author = {Yu, Mohan and Zhang, Xumiao and An, Zhe and Wang, En and Zheng, Bin},
+title = {Evolution of AliYANG: Model-driven and LLM-assisted Network Configuration Management},
+year = {2026},
+isbn = {9798400724671},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3789240.3829193},
+abstract = {Configuration management in large-scale cloud networks is increasingly challenging due to vendor heterogeneity, diverse configuration interfaces, and rapid configuration evolution across the network life cycle. Existing approaches rely heavily on vendor- and interface-specific templates and scripts, which are difficult to validate, costly to maintain, and scale poorly. We introduce AliYANG, a YANG-based configuration modeling framework that unifies configuration representation across vendors and management interfaces. It extends YANG to capture CLI semantics and derives a vendor-agnostic core model that separates configuration semantics from vendor-specific implementations. We further present NetCMDB, the production software infrastructure for AliYANG, which compiles models into typed configuration objects and supports end-to-end, model-driven configuration workflows. As networks evolve, manually constructing and maintaining models becomes a bottleneck. We incorporate LLM-assisted automation to facilitate vendor model augmentation, core model design, and bidirectional translation code generation. We report our three-year production deployment experience managing hundreds of thousands of devices, present evaluation results and case studies, and share lessons from operating a model-driven configuration system at cloud scale.},
+booktitle = {Proceedings of the ACM SIGCOMM 2026 Conference},
+pages = {1724–1738},
+numpages = {15}
+}
+
+@inbook{10.1145/3789240.3829170,
+author = {Jiang, Yining and Xu, Yunxin and Xu, Wenyun and Zhu, Yufan and Liu, Rui and He, Tangtang and Huang, Haiying and Zhu, Letian and Song, Qingyu and Su, Qiang and You, Lizhao and Tang, Lu and Feng, Wanjian and Zhang, Yuchao and Kong, Linghe and Xiang, Qiao and Shu, Jiwu},
+title = {RepLLM: Toward Automatically Reproducing Network Research Results},
+year = {2026},
+isbn = {9798400724671},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3789240.3829170},
+abstract = {Result reproduction of computer networking research is challenging as the scarcity of open-source implementations and the complexity of heterogeneous system architectures. Even though Large Language Models have demonstrated potential in code generation, existing code generation frameworks often fail to address the long-context constraints and intricate logical dependencies, which are vital in reproducing network systems from academic papers. Thus, we introduce RepLLM, an end-to-end multi-agent framework designed to automate code reproduction from paper content. RepLLM features a collaborative architecture comprising four specialized agents—Content Parsing, Architecture Design, Code Generation, and Audit \& Repair, which are coordinated through Shared Memory mechanism to ensure global context consistency. With the enhancement of Structured Chain-of-Thought LLM reasoning and a sandbox-isolated static-dynamic debugging methodology, our framework effectively resolves semantic discrepancies and runtime errors, thereby improving reliable reproductions. Extensive evaluations on representative papers in top conferences demonstrate that RepLLM outperforms state-of-the-art system-level LLM frameworks in generating compile-ready and logically correct systems. Our results show that, with the aid of RepLLM, we can reproduce 95\% of the original benchmarks within approximately two hours while reducing token consumption by up to 10\% compared with state-of-the-art baselines.},
+booktitle = {Proceedings of the ACM SIGCOMM 2026 Conference},
+pages = {1630–1648},
+numpages = {19}
+}
+
+@inbook{10.1145/3789240.3829142,
+author = {Yu, Daiyang and Chen, Xinyu and Zhang, Yihan and Liang, Yan and Qiao, Yaqi and Lai, Fan},
+title = {EMA: Efficient Model Adaptation for Learning-based Systems},
+year = {2026},
+isbn = {9798400724671},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3789240.3829142},
+abstract = {Machine learning (ML) is increasingly applied to optimize system performance in tasks such as resource management and network simulation. Unlike traditional ML tasks (e.g., image classification), networked systems often operate in heterogeneous, long-running, and dynamic environment states, where input conditions (e.g., network loads) and operational objectives can shift over time and across settings. Existing learning-based systems offer little support for adaptation, resulting in costly model training, extensive data collection, degraded system performance, and slow responsiveness.This paper presents EMA, the first model adaptation system supporting learning-based systems to adapt to evolving environments with minimal operational overhead. EMA takes a system-driven, data-centric approach that accommodates diverse system and model designs while addressing two key deployment challenges. First, it reduces expensive model training by introducing state transformers that align the input state of a new environment with previously similar states, allowing models to warm-start adaptation. Second, it addresses the often-overlooked yet costly process of data labeling—collecting ground truth for exploring and training on various system decisions—by prioritizing labeling high-utility data while balancing the tradeoff between training and labeling cost. Evaluations on seven representative learning-based systems show that EMA reduces adaptation costs (e.g., GPU training hours) by 14.9–42.4\% while improving system performance (e.g., network throughput) by 6.9–31.3\%.},
+booktitle = {Proceedings of the ACM SIGCOMM 2026 Conference},
+pages = {1617–1629},
+numpages = {13}
+}
+
+@inbook{10.1145/3789240.3829146,
+author = {Yu, Shiming and Shen, Leming and Zhang, Jianing and Li, Xin and Xia, Xianjin and Zheng, Yuanqing and Xie, Yaxiong},
+title = {RANPilot: Making AI Functionalities Robust to Dynamic O-RAN Reconfigurations},
+year = {2026},
+isbn = {9798400724671},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3789240.3829146},
+abstract = {The Open Radio Access Network (O-RAN) promises unprecedented flexibility through its reconfigurable architecture and AI-driven control. However, this agility exposes a critical fragility: AI models trained on one network configuration suffer significant performance degradation after an upgrade due to dramatic data drift. The standard solution, reactive retraining, is unacceptably slow, leaving the network in a suboptimal state for tens of minutes and undermining the core benefits of O-RAN's dynamism. This paper introduces RANPilot, the first framework to address this challenge through proactive AI adaptation. RANPilot constructs a lightweight "virtual O-RAN" (a trace-driven emulator) to synthesize high-fidelity training data representing the post-reconfiguration state before the physical change occurs, allowing AI models to be adapted in advance. Extensive experiments on a real-world 5G testbed demonstrate that RANPilot achieves near interruption-free AI services upon reconfiguration, reducing AI downtime by 85\% to 94\% against reactive baselines. By shifting the AI evolution paradigm from reactive redevelopment to proactive preparation, RANPilot explores a digital-leadoff approach to enable robust AI in reconfigurable O-RAN deployments.},
+booktitle = {Proceedings of the ACM SIGCOMM 2026 Conference},
+pages = {284–300},
+numpages = {17}
+}
+
+@inproceedings{10.1145/3789240.3829112,
+author = {Gong, Aoyu and Cannat{\`a}, Raphael and Maghsoudnia, Arman and Lomba Lomba, N{\'e}stor and Mihai Dumitriu, Dan and Hassanieh, Haitham},
+title = {SAGE: A Real-Time AI System for Reducing Latency in NextG Cellular Networks},
+year = {2026},
+isbn = {9798400724671},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3789240.3829112},
+doi = {10.1145/3789240.3829112},
+abstract = {NextG applications such as AR/VR, industrial automation, cloud gaming, and autonomous robots increasingly demand lower latencies. Current 5G networks, however, incur significant delays due to request-based scheduling, where users must signal demand before the base station can allocate resources for uplink transmissions. In this paper, we present Sage, a real-time AI system that can predict per-user uplink demand at millisecond granularity and proactively allocate resources to reduce uplink latency. Sage proposes traffic trains: a novel abstraction that mitigates distortions to the observed traffic arrivals at the base station and yields stable prediction targets. Sage extracts statistical features from user traffic and retrieves appropriate models from a traffic-aware database of dedicated AI predictors. Sage further executes low-latency inference, error tracking, and online continual learning to dynamically adapt prediction models. Extensive evaluation shows that Sage achieves millisecond-level prediction accuracy with sub-millisecond inference overhead, reducing uplink latency by 2.53X on average across diverse applications while maintaining high resource efficiency.},
+booktitle = {Proceedings of the ACM SIGCOMM 2026 Conference},
+pages = {263–283},
+numpages = {21},
+keywords = {5G, NextG, cellular networks, low latency, real-time AI system, predictive scheduling},
+location = {Colorado Convention Center, Denver, CO, USA},
+series = {SIGCOMM '26}
+}
+
+@inproceedings{10.1145/3789240.3829109,
+author = {Xue, Leyang and Zhang, Bolun and Ma, Yibo and Marina, Mahesh and Yan, He and Zhou, Yu and Ip, Cheuk Yiu and Dhandapani, Senthil and Klosowski, James},
+title = {CausalTune: Causal Learning based Automated Cellular RAN Configuration Tuning Framework},
+year = {2026},
+isbn = {9798400724671},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3789240.3829109},
+doi = {10.1145/3789240.3829109},
+abstract = {Continual configuration tuning in cellular radio access networks (RANs) is critical for maintaining performance, reliability, energy efficiency, and user experience. However, this task remains largely manual in practice. Automating it needs to confront high-dimensional configuration spaces, sparse and biased exploration, strong parameter interactions, and substantial environmental confounding. Existing RAN configuration tuning approaches have limited effectiveness in addressing these challenges. In this paper, we present CausalTune, a novel causal learning framework for automated RAN configuration optimization based on observational telemetry. CausalTune disentangles configuration effects from environmental and operational confounders, generalizes to sparse and previously unseen parameter settings, and captures high-impact multi-parameter interactions. Our key insight is that effective causal inference in operational RANs requires reshaping raw telemetry to expose confounding and learning environment-invariant mechanisms. Guided by this insight, CausalTune employs a multistage pipeline that integrates distributional representation learning, causal modeling, and interaction-aware recommendation. We evaluate CausalTune using 10 months of RAN measurement data from 1M commercial cells of a major cellular operator. Our comparison to state-of-the-art baselines shows that CausalTune achieves up to 3X KPI improvement on the held-out dataset. In terms of causal modeling quality, CausalTune achieves up to 12X lower KPI reconstruction error; on recommended configuration safety, it achieves 4X higher agreement with expert engineers while significantly reducing off-target recommendations. These findings demonstrate the potential of causal learning to enable reliable, scalable, and interpretable RAN configuration tuning.},
+booktitle = {Proceedings of the ACM SIGCOMM 2026 Conference},
+pages = {242–262},
+numpages = {21},
+keywords = {radio access networks, configuration tuning, causal learning},
+location = {Colorado Convention Center, Denver, CO, USA},
+series = {SIGCOMM '26}
+}
+
+@inproceedings{10.1145/3767295.3803579,
+author = {Lu, Yilei and He, Dongbiao and Ma, Teng and Liu, Zhe and Ruan, Letian and Jiang, Jinlei and Wu, Yongwei},
+title = {Bridging the GPU Utilization Gap: Predictive Multi-Dimensional Resource Scheduling for AI Workloads},
+year = {2026},
+isbn = {9798400722127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3767295.3803579},
+doi = {10.1145/3767295.3803579},
+abstract = {Modern AI data centers face a critical paradox: while machine learning workloads dominate infrastructure demands, actual GPU utilization remains consistently low. Existing schedulers fail to coordinate heterogeneous resources effectively, lack predictive capabilities for dynamic workloads, and cannot balance isolation requirements with sharing optimization in multi-tenant clusters. This paper presents Wind, a novel resource scheduler that bridges the GPU utilization gap through predictive scheduling and geometric resource coordination. Wind introduces three key innovations: (1) a resource prediction framework that leverages historical execution patterns to forecast task requirements and completion times with high accuracy;(2) a unified scheduling architecture supporting isolation, sharing, preemption, and prioritization policies that eliminate resource fragmentation while maintaining performance guarantees; and (3) a Hilbert curve-based multi-dimensional scheduling algorithm that maps CPU-memory-GPU resource space to preserve spatial locality while achieving linear computational complexity.Our evaluation on a 139–node cluster demonstrates that Wind consistently outperforms K8s Default, DRF, and Synergy across diverse workloads. It reduces average response time by 33–48\%, lowers P99 JCT by 37\%, and improves throughput by up to 46.6\% under bursty loads. GPU utilization remains above 92\%, while medium-load scenarios yield ***up-mei to 25\% resource savings, highlighting the practicality of Wind for production-scale AI clusters.},
+booktitle = {Proceedings of the 21st European Conference on Computer Systems},
+pages = {383–399},
+numpages = {17},
+keywords = {GPU resource scheduling, AI workloads, predictive modeling, hilbert curve},
+location = {McEwan Hall/The University of Edinburgh, Edinburgh, Scotland UK},
+series = {EUROSYS '26}
+}
+
+@inproceedings{10.1145/3767295.3769317,
+author = {Tian, Han and Li, Wenbo and Zhang, Junxue and Liao, Xudong and Sun, Decang and Chen, Donghui and Huang, Bin and Li, Wenxue and Wang, Yong and Chen, Kai},
+title = {Learn-to-Probe: Achieving Signal Distinguishability in Learning-based Congestion Control},
+year = {2026},
+isbn = {9798400722127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3767295.3769317},
+doi = {10.1145/3767295.3769317},
+abstract = {Internet congestion control remains a fundamental challenge, and recent learning-based congestion control algorithms (CCAs) have shown potential in optimizing network performance. However, their reliance on heuristically chosen input signals often leads to suboptimal behavior across diverse network conditions. In this paper, we identify the root cause as the lack of signal distinguishability-the ability of signals to reflect meaningful differences in network states. To address this, we propose Learn-to-Probe (LTP), a novel signal engineering paradigm that actively generates distinguishable network signals to improve the learning process. LTP (i) employs Bayesian filtering to accurately estimate network states from historical signals, and (ii) introduces an intrinsic reinforcement learning reward that encourages the flow to probe the network, inducing signal sequences that minimize the estimation uncertainty in (i). This probing behavior naturally enhances signal distinguishability, enabling the learning model to make more informed decisions. Extensive evaluations show that LTP consistently achieves high link utilization, low queuing delay, and stable convergence across diverse environments. Our results underscore the importance of signal distinguishability and offer a new direction for robust, adaptive congestion control.},
+booktitle = {Proceedings of the 21st European Conference on Computer Systems},
+pages = {108–125},
+numpages = {18},
+keywords = {congestion control, machine learning, transport protocol},
+location = {McEwan Hall/The University of Edinburgh, Edinburgh, Scotland UK},
+series = {EUROSYS '26}
+}
+
+@inproceedings{10.1145/3767295.3769362,
+author = {Yang, Chenxi and Saxena, Divyanshu and Dwivedula, Rohit and Mahajan, Kshiteej and Chaudhuri, Swarat and Akella, Aditya},
+title = {Canopy: Property-Driven Learning for Congestion Control},
+year = {2026},
+isbn = {9798400722127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3767295.3769362},
+doi = {10.1145/3767295.3769362},
+abstract = {Learning-based congestion controllers offer better adaptability compared to traditional heuristics. However, the unreliability of learning techniques can cause learning-based controllers to behave poorly, creating a need for formal guarantees. While methods for formally verifying learned congestion controllers exist, these methods offer binary feedback that cannot optimize the controller toward better behavior. We improve this state-of-the-art via Canopy, a new property-driven framework that integrates learning with formal reasoning in the learning loop. Canopy uses novel quantitative certification with an abstract interpreter to guide the training process, rewarding models, and evaluating robust and safe model performance on worst-case inputs. Our evaluation demonstrates that unlike state-of-the-art learned controllers, Canopy-trained controllers provide both adaptability and worst-case reliability across a range of network conditions.},
+booktitle = {Proceedings of the 21st European Conference on Computer Systems},
+pages = {1658–1673},
+numpages = {16},
+keywords = {congestion control, reinforcement learning, machine learning for systems, abstract interpretation, formal verification},
+location = {McEwan Hall/The University of Edinburgh, Edinburgh, Scotland UK},
+series = {EUROSYS '26}
+}
+
+@inproceedings{10.1145/3767295.3769338,
+author = {Beckett, Ryan and Yan, Francis Y. and Pocha, Raghunadha Reddy and Raj, Vineesh V. and Shaik, Ayyub and Kakarla, Siva Kesava Reddy},
+title = {Concord: Learning Network Configuration Contracts},
+year = {2026},
+isbn = {9798400722127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3767295.3769338},
+doi = {10.1145/3767295.3769338},
+abstract = {Misconfiguration is frequently cited as a leading cause of service disruptions and outages. To prevent misconfiguration, we introduce network contracts—lightweight configuration checks that run efficiently, localize errors to specific lines, and require no heavyweight modeling of network protocols. We develop a tool Concord to learn contracts automatically from example network configurations. By checking these learned contracts against new or changed configurations, Concord finds likely configuration bugs before they can impact the network. Key to our approach is a scalable algorithm for learning "relational" contracts that capture complex dependencies between configuration settings. We deployed Concord as part of a cloud-based configuration management service and evaluated its scalability, coverage, precision, and utility on two large real-world configuration datasets.},
+booktitle = {Proceedings of the 21st European Conference on Computer Systems},
+pages = {801–818},
+numpages = {18},
+keywords = {configuration validation, misconfiguration detection, network reliability, association rule learning},
+location = {McEwan Hall/The University of Edinburgh, Edinburgh, Scotland UK},
+series = {EUROSYS '26}
+}
+
+@inproceedings{10.1145/3767295.3769338,
+author = {Beckett, Ryan and Yan, Francis Y. and Pocha, Raghunadha Reddy and Raj, Vineesh V. and Shaik, Ayyub and Kakarla, Siva Kesava Reddy},
+title = {Concord: Learning Network Configuration Contracts},
+year = {2026},
+isbn = {9798400722127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3767295.3769338},
+doi = {10.1145/3767295.3769338},
+abstract = {Misconfiguration is frequently cited as a leading cause of service disruptions and outages. To prevent misconfiguration, we introduce network contracts—lightweight configuration checks that run efficiently, localize errors to specific lines, and require no heavyweight modeling of network protocols. We develop a tool Concord to learn contracts automatically from example network configurations. By checking these learned contracts against new or changed configurations, Concord finds likely configuration bugs before they can impact the network. Key to our approach is a scalable algorithm for learning "relational" contracts that capture complex dependencies between configuration settings. We deployed Concord as part of a cloud-based configuration management service and evaluated its scalability, coverage, precision, and utility on two large real-world configuration datasets.},
+booktitle = {Proceedings of the 21st European Conference on Computer Systems},
+pages = {801–818},
+numpages = {18},
+keywords = {configuration validation, misconfiguration detection, network reliability, association rule learning},
+location = {McEwan Hall/The University of Edinburgh, Edinburgh, Scotland UK},
+series = {EUROSYS '26}
+}
+
+@inproceedings{10.1145/3767295.3803617,
+author = {Park, Jonggyu and Peter, Simon and Anderson, Thomas E.},
+title = {Prediction-Informed Power Management for General-Purpose Compute Servers},
+year = {2026},
+isbn = {9798400722127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3767295.3803617},
+doi = {10.1145/3767295.3803617},
+abstract = {This paper presents PIP (Prediction-Informed Power), a power control framework for general-purpose compute servers. PIP introduces two key innovations: (1) a machine learning-based power model that predicts the impact of hypothetical CPU throttling actions before execution, and (2) a prediction-informed control loop that selects CPU configurations to maximize performance and power utilization based on these predictions. By leveraging finegrained runtime CPU metrics, PIP can accurately estimate counterfactual power usage, allowing the control system to align power demand with the budget more quickly. Unlike traditional reactive approaches, PIP maintains effective control under frequent budget fluctuations, achieving safe oversubscription by up to 70\%. Our evaluation on diverse application workloads, none of which are included in the model's training set, shows that PIP yields up to a 3.2{\texttimes} speedup over a state-of-the-art feedback-based system for single-application runs, and up to a 3.4{\texttimes} speedup for multi-application scenarios under power constraints.},
+booktitle = {Proceedings of the 21st European Conference on Computer Systems},
+pages = {1689–1706},
+numpages = {18},
+keywords = {data center operation, power management, power oversubscription},
+location = {McEwan Hall/The University of Edinburgh, Edinburgh, Scotland UK},
+series = {EUROSYS '26}
+}
+
+@inproceedings{10.1145/3767295.3803614,
+author = {Liu, Jinyang and Li, Yichen and Zhang, Tieying and Chen, Binbin and He, Xiao and Jiang, Zhihan and Zhang, Haipeng and Wu, Gang and Li, Yi},
+title = {Proactive Change Risk Detection in Production Cloud Systems: ByteDance’s Experience},
+year = {2026},
+isbn = {9798400722127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3767295.3803614},
+doi = {10.1145/3767295.3803614},
+abstract = {Modern cloud services rely on a high volume of changes for rapid innovation, yet these changes are a primary cause of production incidents. To manage this risk, industry practice employs tiered change management pipelines that concentrate static rules and human reviews. However, our analysis of ByteDance's cloud platform (Volcano Engine) reveals a critical long tail problem: while high-risk changes undergo extensive scrutiny, 78.1\% of change-induced incidents originate from the sheer volume of low-risk changes that receive minimal review. At this scale, exhaustive manual review is fundamentally infeasible. To address this, we present Aegis, a novel knowledge-driven system that provides interpretable change risk assessment. Aegis automatically constructs a knowledge base from historical operational data, distilling it into generalized risk heuristics and identifying relevant precedent cases. When a new change is proposed, Aegis generates human-readable warnings grounded in this historical evidence, explaining why a change is risky. We have deployed Aegis in Volcano Engine's production environment for five months, where it processed tens of thousands of change requests. Its risk escalations achieved a 75\% acceptance rate from production engineers and successfully prevented multiple potential incidents.},
+booktitle = {Proceedings of the 21st European Conference on Computer Systems},
+pages = {1565–1580},
+numpages = {16},
+keywords = {change management, risk detection, cloud systems, LLM, production deployment},
+location = {McEwan Hall/The University of Edinburgh, Edinburgh, Scotland UK},
+series = {EUROSYS '26}
+}
+
+@inproceedings{10.1145/3767295.3803589,
+author = {Jung, Alexander and Cr{\u a}ciunoiu, Cezar and Karaolidis, Nikolaos and Lefeuvre, Hugo and Rubio, Daniel O{\~n}oro and Huici, Felipe and Rotsos, Charalampos and Olivier, Pierre},
+title = {Wayfinder: Automated Operating System Specialization},
+year = {2026},
+isbn = {9798400722127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3767295.3803589},
+doi = {10.1145/3767295.3803589},
+abstract = {Operating system specialization is a well-known approach to optimize a specific application's performance, memory usage, security, or other important metrics. Specializing an OS for an application is typically a manual process that requires great expertise. Specialization through configuration lends itself well to automation; however, it is challenging due to the sheer size of the configuration space of modern OSes, the difficulty to quantify that space, the long time it takes to evaluate a configuration, and the large number of invalid configurations. Hence, existing attempts at specializing OSes automatically are limited to switching features on and off to minimize memory consumption or attack surface, and cannot target metrics such as performance.We present Wayfinder, a framework specializing the configuration of OSes completely automatically and without expert knowledge. It can specialize all aspects of an OS configuration (compile-/boot-/run-time) towards any quantifiable performance, resource consumption, or security metric, for an application processing a given workload on a given hardware setup. Wayfinder consists of an automated OS benchmarking platform, and a neural network-based search algorithm driving the specialization process. This is achieved by learning on the fly which configuration parameters and values impact performance the most, and which ones lead to runtime failures. Optionally, a model pre-trained on one application can be reused to accelerate the specialization of related applications. We evaluate Wayfinder on two OSes, four applications, and two target metrics: Wayfinder fully automatically identifies specialized configurations with up to 24\% application performance improvement and 8.5\% memory usage reduction compared to default configurations. We highlight the benefits of our neural network, reaching good solutions faster than competing approaches (random and Bayesian), and successfully transferring knowledge between related applications.},
+booktitle = {Proceedings of the 21st European Conference on Computer Systems},
+pages = {710–727},
+numpages = {18},
+keywords = {operating systems, specialization},
+location = {McEwan Hall/The University of Edinburgh, Edinburgh, Scotland UK},
+series = {EUROSYS '26}
+}
+
+@inproceedings{10.1145/3767295.3803590,
+author = {Qi, Guicheng and Su, Junwei and Yang, Liqi and Li, Tao and Xie, Tingwen and Sun, Yerui and Xie, Yuchen and Wu, Chuan},
+title = {HetAuto: Cross-Cluster Auto-Parallelism for Heterogeneous Distributed Training},
+year = {2026},
+isbn = {9798400722127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3767295.3803590},
+doi = {10.1145/3767295.3803590},
+abstract = {As large neural network models (e.g., LLMs) grow in scale, single-cluster resources become insufficient, making cross-cluster distributed training essential. Cross-cluster training is challenging: hardware heterogeneity complicates load balancing and parallelization strategy and introduces hardware compatibility issues in implementation; cross-cluster communication bottlenecks severely impact training throughput. We present HetAuto, an automatic parallelization system for efficient cross-cluster heterogeneous large model training. HetAuto contributes three key innovations: (1) a principle-guided MCTS algorithm with a random forest-enhanced cost model that efficiently searches parallelization strategies and quickly evaluates their performance under heterogeneous configurations; (2) cross-cluster communication optimizations including Virtual-1F1B scheduling that overlaps communication with computation and an optimized resharding strategy for inter-stage communication; and (3) a unified API enabling seamless integration of diverse accelerators. We evaluate HetAuto across 4 different clusters with up to 736 heterogeneous devices. The evaluation results show that HetAuto achieves up to 1.57{\texttimes} training throughput improvement over representative baselines, and strikes an efficient balance between solution quality and search overhead.},
+booktitle = {Proceedings of the 21st European Conference on Computer Systems},
+pages = {759–779},
+numpages = {21},
+keywords = {distributed training, heterogeneous clusters, auto-parallelism},
+location = {McEwan Hall/The University of Edinburgh, Edinburgh, Scotland UK},
+series = {EUROSYS '26}
+}
+
+@inproceedings{liargkovas2026tuxbot,
+  title={TuxBot: Semantic-Aware Online OS Tuning with LLMs},
+  author={Liargkovas, Georgios and Joshi, Mihir Nitin and Franke, Hubertus and Kaffes, Kostis},
+  booktitle={Proceedings of the ACM Symposium on Operating Systems Principles (SOSP)},
+  year={2026}
+}
+
+@inproceedings{mai2026guiding,
+  title={Guiding Agentic {GPU} Kernel Optimization with Data Flow Invariants},
+  author={Mai, Haohui and Guo, Xiaoyan and Ding, Xiangyun and Li, Daifeng and Yu, Qiuchu and Guo, Chenzhun and Wang, Cong and Zhao, Jiacheng and Kozyrakis, Christos and Yuan, Binhang},
+  booktitle={Proceedings of the ACM Symposium on Operating Systems Principles (SOSP)},
+  year={2026}
+}
+
+@inproceedings{wong2026state,
+  title={State-Aware Fuzzing of {JavaScript} Engines with {LLM}-Guided Instrumentation},
+  author={Wong, Wai Kin and Xiao, Dongwei and LAI, Anthony Cheuk Tung and Ke, Ping Fan and Wang, Shuai},
+  booktitle={Proceedings of the ACM Symposium on Operating Systems Principles (SOSP)},
+  year={2026}
+}
+
+@inproceedings{
+ping2026verimoa,
+title={VeriMoA: A Mixture-of-Agents Framework for Spec-to-{HDL} Generation},
+author={Heng Ping and Arijit Bhattacharjee and Peiyu Zhang and Shixuan Li and Wei Yang and Anzhe Cheng and Xiaole Zhang and Jesse Thomason and Ali Jannesari and Nesreen Ahmed and Paul Bogdan},
+booktitle={Ninth Conference on Machine Learning and Systems},
+year={2026},
+url={https://openreview.net/forum?id=5wgZXJ0kWA}
+}
+
+@inproceedings{
+nagaitsev2026optimizing,
+title={Optimizing PyTorch Inference with {LLM}-Based Multi-Agent Systems},
+author={Kirill Nagaitsev and Luka Grbcic and Samuel Williams and Costin Iancu},
+booktitle={Ninth Conference on Machine Learning and Systems},
+year={2026},
+url={https://openreview.net/forum?id=MJxhiX3sSd}
+}
+
+@inproceedings{
+zhao2026virtual,
+title={Virtual Machine {NUMA} Placement at Scale: Learning the Norm, Shielding the Tail},
+author={Yibo Zhao and Tianyuan Wu and Hui Xue and Qi Chen and Zhenhua Han and Zikai Xu and Yuntai Chang and Rui Gao and Steve Deng and Ray Jui-Hao Chiang and Mingxia Li and Yuqing Yang and Cheng Tan and Fan Yang and Peng Cheng and Yongqiang Xiong and Lili Qiu and Lidong Zhou},
+booktitle={Ninth Conference on Machine Learning and Systems},
+year={2026},
+url={https://openreview.net/forum?id=guCUThRvX5}
+}
+
+@inproceedings{
+gohil2026when,
+title={When Machine Learning Isn{\textquoteright}t Sure: Building Resilient {ML}-Based Computer Systems by Embracing Uncertainty},
+author={Varun Gohil and Nevena Stojkovic and Noman Bashir and Sundar Dev and Gaurang Upasani and David Lo and Parthasarathy Ranganathan and Christina Delimitrou},
+booktitle={Ninth Conference on Machine Learning and Systems},
+year={2026},
+url={https://openreview.net/forum?id=i0iOQL2MF5}
+}
+
+@inproceedings{
+mortensen2026practical,
+title={Practical Adversarial Multi-Armed Bandits with Sublinear Runtime},
+author={Kasper Overgaard Mortensen and Ama Bembua Bainson and Mathias Ravn Tversted and Kristoffer Strube Gr{\ae}m and Renata Borovica-Gajic and Andrea Paudice and Davide Mottin and Panagiotis Karras},
+booktitle={Ninth Conference on Machine Learning and Systems},
+year={2026},
+url={https://openreview.net/forum?id=lfHvcstuo2}
+}
+
+@inproceedings{
+abdollahi2026unified,
+title={Unified {LLM} Model for Power, Performance, and Area Prediction from Hardware Code},
+author={Armin Abdollahi and Mehdi Kamal and Massoud Pedram},
+booktitle={Ninth Conference on Machine Learning and Systems},
+year={2026},
+url={https://openreview.net/forum?id=lpO7kxiayb}
+}
+
+@inproceedings{
+willemsen2026automated,
+title={Automated Algorithm Design for Auto-Tuning Optimizers},
+author={Floris-Jan Willemsen and Niki van Stein and Ben van Werkhoven},
+booktitle={Ninth Conference on Machine Learning and Systems},
+year={2026},
+url={https://openreview.net/forum?id=qKlHJCbY6m}
+}
+
+@inproceedings{
+xing2026flashinferbench,
+title={FlashInfer-Bench: Building the Virtuous Cycle for {AI}-driven {LLM} Systems},
+author={Shanli Xing and Yiyan Zhai and Alexander Jiang and Yixin Dong and Yong Wu and Zihao Ye and Charlie F. Ruan and Yingyi Huang and Yineng Zhang and Liangsheng Yin and Aksara Bayyapu and Luis Ceze and Tianqi Chen},
+booktitle={Ninth Conference on Machine Learning and Systems},
+year={2026},
+url={https://openreview.net/forum?id=IyryZno8Hh}
+}
+
+@inproceedings {318650,
+author = {Baoding He and Zenan Li and Wei Sun and Yuan Yao and Taolue Chen and Xiaoxing Ma and Zhendong Su},
+title = {{Neuro-Symbolic} Proof Generation for Scaling Systems Software Verification},
+booktitle = {20th USENIX Symposium on Operating Systems Design and Implementation (OSDI 26)},
+year = {2026},
+isbn = {978-1-939133-55-7},
+address = {Seattle, WA},
+pages = {2533--2550},
+url = {https://www.usenix.org/conference/osdi26/presentation/he-baoding},
+publisher = {USENIX Association},
+month = jul
+}
+
+@inproceedings {318608,
+author = {Zhengtong Zhang and Zihan Xu and Zhidong Hu and Yanbo Shan and Fei Peng and Suhong Chen and Kaiyuan Shen and Xiangyun Kong and Handu Ding and Bing He and Binda Ma},
+title = {{DVLA}: Dynamic {VM} Lifetime Aware Scheduling for Drifting Lifetime Distributions and {Long-Lived} {VM} Placement Debt (Operational Systems)},
+booktitle = {20th USENIX Symposium on Operating Systems Design and Implementation (OSDI 26)},
+year = {2026},
+isbn = {978-1-939133-55-7},
+address = {Seattle, WA},
+pages = {2149--2168},
+url = {https://www.usenix.org/conference/osdi26/presentation/zhang-zhengtong},
+publisher = {USENIX Association},
+month = jul
+}
+
+@inproceedings {318553,
+author = {Yuchen Huang and Baiteng Ma and Yiping Sun and Yang Shi and Xiao Chen and Xiaocheng Zhong and Zhiyong Wang and Yao Hu and Erci Xu and Chuliang Weng},
+title = {The Clustering Strikes Back: Building {Cost-Effective} and {High-Performance} {ANNS} at Scale with Helmsman (Operational Systems)},
+booktitle = {20th USENIX Symposium on Operating Systems Design and Implementation (OSDI 26)},
+year = {2026},
+isbn = {978-1-939133-55-7},
+address = {Seattle, WA},
+pages = {1623--1639},
+url = {https://www.usenix.org/conference/osdi26/presentation/huang-yuchen},
+publisher = {USENIX Association},
+month = jul
+}
+
+@inproceedings {318507,
+author = {Ruihao Li and Leonardo Piga and Wei Su and Carlos Torres and Jovan Stojkovic and Neeraja J. Yadwadkar and Lizy K. John and Abhishek Dhanotia},
+title = {Hardware {Lifecycle-Aware} Power Planning in Commercial Hyperscale Datacenters (Operational Systems)},
+booktitle = {20th USENIX Symposium on Operating Systems Design and Implementation (OSDI 26)},
+year = {2026},
+isbn = {978-1-939133-55-7},
+address = {Seattle, WA},
+pages = {1167--1184},
+url = {https://www.usenix.org/conference/osdi26/presentation/li-ruihao},
+publisher = {USENIX Association},
+month = jul
+}
+
+@inproceedings {318509,
+author = {Ruofan Wu and Jae-Won Chung and Mosharaf Chowdhury},
+title = {Kareus: Joint Reduction of Dynamic and Static Energy in Large Model Training},
+booktitle = {20th USENIX Symposium on Operating Systems Design and Implementation (OSDI 26)},
+year = {2026},
+isbn = {978-1-939133-55-7},
+address = {Seattle, WA},
+pages = {1185--1204},
+url = {https://www.usenix.org/conference/osdi26/presentation/wu-ruofan},
+publisher = {USENIX Association},
+month = jul
+}
+
+@inproceedings {318618,
+author = {Haocheng Xia and William Nixon and Bintang Dwi Marthen and Pranav Bhandari and Juncheng Yang},
+title = {{Learning-Augmented} Heuristics: Simple Yet Smart, Robust and Interpretable Cache Eviction},
+booktitle = {20th USENIX Symposium on Operating Systems Design and Implementation (OSDI 26)},
+year = {2026},
+isbn = {978-1-939133-55-7},
+address = {Seattle, WA},
+pages = {2241--2259},
+url = {https://www.usenix.org/conference/osdi26/presentation/xia},
+publisher = {USENIX Association},
+month = jul
+}
+
+@inproceedings {318614,
+author = {Donghyun Kim and Zichao Hu and Joydeep Biswas and Aditya Akella and Daehyeok Kim},
+title = {Mimesys: Generating Realistic Executable Testing Environments from Resource Usage Traces},
+booktitle = {20th USENIX Symposium on Operating Systems Design and Implementation (OSDI 26)},
+year = {2026},
+isbn = {978-1-939133-55-7},
+address = {Seattle, WA},
+pages = {2205--2221},
+url = {https://www.usenix.org/conference/osdi26/presentation/kim-donghyun},
+publisher = {USENIX Association},
+month = jul
+}
+
+@inproceedings {318638,
+author = {Mayur Akewar and Dongsheng Luo and Sandeep Madireddy and Janki Bhimani},
+title = {{SMARTTalk}: Teaching {SMART} Logs to Talk to {LLMs}},
+booktitle = {20th USENIX Symposium on Operating Systems Design and Implementation (OSDI 26)},
+year = {2026},
+isbn = {978-1-939133-55-7},
+address = {Seattle, WA},
+pages = {2423--2441},
+url = {https://www.usenix.org/conference/osdi26/presentation/akewar},
+publisher = {USENIX Association},
+month = jul
+}
+
+@inproceedings {318445,
+author = {Hannah Lin and Martin Maas and Maximilian Roquemore and Arman Hasanzadeh and Fred Lewis and Yusuf Simonson and Ameya Shringi and Hongwen Dai and Patrick Musau and Tzu-Wei Yang and Amir Yazdanbakhsh and Deniz Alt{\i}nb{\"u}ken and Florin Papa and Maggie Nolan Edmonds and Aditya Patil and Don Schwarz and Satish Chandra and Chris Kennelly and Milad Hashemi and Parthasarathy Ranganathan},
+title = {{ECO}: An {AI-Driven} Code Efficiency Optimizer for Warehouse Scale Computers (Operational Systems)},
+booktitle = {20th USENIX Symposium on Operating Systems Design and Implementation (OSDI 26)},
+year = {2026},
+isbn = {978-1-939133-55-7},
+address = {Seattle, WA},
+pages = {589--625},
+url = {https://www.usenix.org/conference/osdi26/presentation/lin-hannah},
+publisher = {USENIX Association},
+month = jul
+}
+
 @ARTICLE{10488711,
   author={Gohil, Varun and Dev, Sundar and Upasani, Gaurang and Lo, David and Ranganathan, Parthasarathy and Delimitrou, Christina},
   journal={IEEE Computer Architecture Letters}, 
